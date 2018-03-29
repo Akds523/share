@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+	<ul id="ul">
+
+	</ul>
+<script>
+/*
+	cookie:
+		后端技术，主要能够把客户端的信息发送给服务器，常用来记录用户信息
+		小
+	storage:
+		loacalStorage  存储大
+		sessionStorage 存储大  -> 用不了onstorage -> 关闭浏览器生命结束
+*/
+	let arr = [
+		{
+			title:'服装',
+			id:0,
+			data:['牛仔裤','衬衣','T恤','外套','貂皮大衣','毛衣','裙子'],
+		},
+		{
+			title:'游戏',
+			id:1,
+			data:['lol','wow','吃鸡','农药','斗地主','炉石','阴阳师','狼人杀'],
+		},
+		{
+			title:'电影',
+			id:2,
+			data:['小电影','红海','黑豹','复仇者联盟','金刚狼','福禄娃','邪不胜正'],
+		},
+		{
+			title:'美食',
+			id:3,
+			data:['火锅','过桥米线','带皮黄牛肉','沾益辣子鸡','酸辣黄辣丁','炼乳竹节虫','小炒马蜂蛹','清炒小野鸟'],
+		},
+		{
+			title:'景区',
+			id:4,
+			data:['花果山水帘洞','高老庄','流沙河','女儿国','火焰山','小西天','蓬莱仙岛','盘丝洞','清风岭','车迟国']
+		}	
+	];
+	//没有数据的时候，创建一个新数组
+	if(!document.cookie){
+		document.cookie = 'cai='+JSON.stringify([]);
+	}
+
+	let caicai = JSON.parse(document.cookie.split('=')[1]);
+
+	//从数据中筛选出喜欢的数据
+	function likeArr(){
+		return arr.filter(e=>{
+			for(let i=0;i<caicai.length;i++){
+				if(caicai[i]){
+					if(e.id == caicai[i]){
+						return e;
+					}
+				}
+			}
+		})
+	}
+
+	//从喜欢的数据中随机挑选出内容
+
+	function radomData(arr){
+		let data = [];
+		arr.forEach(e=>{
+			for(var i=0;i<3;i++){
+				data.push(e.data[Math.round(Math.random()*(e.data.length-1))])
+			}
+		});
+		console.log(data);
+		return [...new Set(data)];
+	}
+
+
+
+
+	// console.log(radomData(likeArr()));
+
+	let btns = '';
+	let lists = '';
+	arr.forEach((e,i)=>{
+		btns += `<button data-index="${e.id}" class="${i==0?'active':''}">`+ e.title +'</button>';
+		if(i == 0){
+			if(JSON.parse(document.cookie.split('=')[1]).length){
+				let d = radomData(likeArr());
+				console.log(d);
+				render(d);
+			}else{
+				render(e.data);
+			}
+		}
+	});
+
+	function render(arr){
+		lists = '';
+		arr.forEach((lis,k)=>{
+			lists += '<li>'+ lis +'</li>'
+		});
+		ul.innerHTML = lists;
+	}
+	box.innerHTML = btns;
+	
+
+	const eleBtns = Array.from(document.getElementsByTagName('button'));
+	let btn = eleBtns[0];
+	eleBtns.forEach((e,i)=>{
+		e.onclick = function(){
+			if(!caicai.some(el=>el == e.dataset.index)){
+				caicai.push(e.dataset.index);
+				document.cookie = 'cai='+JSON.stringify(caicai);
+			}
+			btn.className = '';
+			this.className = 'active';
+			render(arr[i].data);
+			btn = this;
+		}
+	});
+	// sessionStorage.setItem('data','1,2,3');
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        split、substring、substr、includes、
+        indexOf、search、trim、charAt、repeat
+        slice、concat、toLowerCase、toUpperCase
+        lastIndexOf、charCodeAt、startswith、endswith
+        match、replace、padStart、padEnd
+
+
+        push、pop、shift、unshift、some、
+        
+        sort:
+            V8 引擎 sort 函数只给出了两种排序 
+            InsertionSort 和 QuickSort，
+            数量小于10的数组使用 InsertionSort，
+            比10大的数组则使用 QuickSort。
+
+        slice  不改变原数组
+
+        filter  -> 过滤
+        map  ->  返回新数组
+        every -> 全部是不是什么条件
+        concat -> 数组链接 ->新数组
+        reverse -> 反转数组
+        join() -> 数组转字符串
+        reduce(fn,0) -> 
+            function fn(tatol,num){
+                return tatol + num
+            }
+        includes
+        Array.from
+        find -> 找到返回内容，找不到返回undefined
+        findIndex 
+        forEach(()=>{},this);
+        splice(起始,0,内容)
+        Array.isArray
+
+    */
+
+    let str = 'miaov';
+    let arr = ['mi','ni','bi','vi','ci','xi'];
+    // console.log(str.startsWith('mia'));
+    // console.log(str.padStart(8,'x'));
+
+    let arr2 = arr.map((e,i)=>{
+        return `这是第${i+1}-` + e; //e.padStart(7,`这是第${i+1}-`);
+    });
+
+    // console.log(arr2);
+
+
+</script>
+</body>
+</html>

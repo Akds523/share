@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		下面输出结果是什么？
+		
+	*/
+	
+	// var x = 5;  // window.x 
+	
+	// function fn1( num ){
+	// 	++ num;
+	// 	alert(num);
+	// }
+	
+	// var y = fn1(x);
+	
+	// console.log('x='+x+':'+'y='+y); 
+
+
+
+
+	var x = {
+		name:'超学'
+	};
+	
+	function fn1( num ){
+		/*
+			函数内已经有num变量了，那么就不会去找参数
+
+		*/
+		var num = {
+			name:'yangna'
+		}
+		// num.name = '杨娜';
+	}
+	fn1(x);
+	console.log(x.name); 
+	
+</script>
+</body>
+</html>
