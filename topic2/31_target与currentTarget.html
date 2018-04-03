@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <div id="box2">
+                嫡女1232
+                <p id="p">21312321</p>
+        </div>
+    </span>
+<script>
+
+    /*
+        ev.target   目标元素
+        ev.currentTarget 当前冒到谁身上的元素
+    */
+    box.onclick = function(ev){
+        console.dir(ev.currentTarget);
+    }
+    p.onclick = function(ev){
+        console.dir(ev.target);
+    }
+    box2.onclick = function(ev){
+        console.dir(ev.currentTarget);
+    }
+</script>
+</body>
+</html>

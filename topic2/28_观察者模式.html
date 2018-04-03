@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        {
+            '点击':[fn,fn2,fn3]
+        }
+
+        onclick = [fn,fn2,fn3]()
+    */
+    //监听者 
+    class Zdy{
+        constructor(){
+            this.obj = {};
+        }
+        //订阅公众号
+        add(eventName,fn){
+            this.obj[eventName] = this.obj[eventName] || [];
+            this.obj[eventName].push(fn);
+        }
+        //公众号发布
+        emit(eventName){
+            if(!this.obj[eventName])return null;
+            this.obj[eventName].forEach(e=>{
+                e.call(this);
+            });
+        }
+        //取订公众号
+        remove(eventName,fnName){
+            if(!this.obj[eventName])return null;
+            this.obj[eventName] = this.obj[eventName].filter(e=>{
+                return e != fnName;
+            });
+        }   
+    }
+
+    let o = new Zdy;
+
+    o.add('点击',function(){
+        alert(1);
+    });
+    o.add('点击',fnn);
+
+    function fnn(){
+        alert(2);
+    }
+
+    o.remove('点击',fnn);
+
+
+    document.onclick = function(){
+        o.emit('点击');
+    }
+
+    console.log(o.obj);
+
+
+</script>
+</body>
+</html>

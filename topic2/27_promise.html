@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let a = 0;
+    // setTimeout(function(){
+    //     a = 20;
+    // },2000);
+
+    // let p = new Promise((succ,fail)=>{
+    //     setTimeout(function(){
+    //         a = 20;
+    //         succ(a);
+    //     },2000);
+    // });
+
+    // p.then((a)=>{
+    //     alert(a);
+    // });
+
+    function ff(){
+        return new Promise((succ)=>{
+            setTimeout(function(){
+                succ(20);
+            },2000);
+        })
+    }
+    function ff2(){
+        return new Promise((succ)=>{
+            setTimeout(function(){
+                succ(30);
+            },2000);
+        });
+    }
+
+    /*
+        函数名前加 *
+
+        yield 类似于return 当调用next的时候就会触发第一次的
+        yield，再用一次next，会触发下一次的yield
+    */
+    function* fn(){
+        yield ff();
+        yield ff2();
+        return 1;
+    }
+
+    let f = fn();
+
+    f.next().value.then((a)=>{
+        alert(a);
+    });
+    f.next().value.then((a)=>{
+        alert(a);
+    });
+    
+    console.log(f.next().value);
+
+
+
+
+    /*
+       加上async的函数，这个函数内都是同步环境
+       await 等待后面执行的结果
+       await 等待后面执行的结果
+
+       返回值是一个Promise对象
+    */
+    // async function fn(){
+    //    const a = await ff();
+    //    const b = await ff2();
+    //    console.log(a,b);
+    //    console.log(123);
+    // }
+    // fn();
+    // console.log(fn());
+
+
+
+
+
+
+
+
+    // alert(a);
+</script>
+</body>
+</html>

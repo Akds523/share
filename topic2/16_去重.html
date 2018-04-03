@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	let arr = ['1',2,1,2,3,3,4,1,5,5,6,6,6,7];
+
+	// for(let i=0;i<arr.length;i++){
+	// 	for(let k=i+1;k<arr.length;k++){
+	// 		if(arr[i] == arr[k]){
+	// 			arr.splice(i,1);
+	// 			i--;
+	// 		}
+	// 	}
+	// }
+
+	// let obj = {};
+	// let arr2 = [];
+	// for(let i=0;i<arr.length;i++){
+	// 	if(!obj[typeof arr[i] + arr[i]]){
+	// 		arr2.push(arr[i]);
+	// 		obj[typeof arr[i] + arr[i]] = 1;
+	// 	}
+	// }
+	// console.log(obj)
+
+	// console.log(arr2);
+
+	/*
+		新建一个数组，循环整个数组，当新建数组中没有循环数组的值时，就把
+		重复数组中的值push到新建数组中，查看新建数组
+	*/
+
+	// let arr2 = [];
+	// for(let i=0;i<arr.length;i++){
+	// 	if(arr2.indexOf(arr[i])==-1){
+	// 		arr2.push(arr[i]);
+	// 	}
+	// }
+
+	/*
+		每次去查看，当前的数据是否为初始的位置，如果是就保留
+	*/
+	let arr2 = arr.filter((e,i,all)=>{
+		if(all.indexOf(e) == i){
+			return e;
+		}
+	});
+	
+	console.log(arr2);
+	
+</script>
+</body>
+</html>

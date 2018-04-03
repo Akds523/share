@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        ES5继承:
+            原型继承
+                实例化对象上没有，还去根据原型链，找到构造函数的原型
+                如果构造函数的原型下有，直接使用
+                如果没有，还会去原型的原型链下去查找
+                等同于找原型的构造函数下的原型。
+                如果都没有就报错，undefined...
+
+            拷贝继承
+                for(let attr in Person.prototype){
+                    Police.prototype[attr] = Person.prototype[attr];
+                }
+            类式继承
+    */
+
+    // function Person(name,age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // Person.prototype.say = function(){
+    //     alert(this.name);
+    // }
+
+    // function Police (name,age){
+    //     Person.call(this,name,age); 
+    // }
+
+    // function ph(){}
+
+    // ph.prototype = Person.prototype;
+
+    // Police.prototype = new ph;
+
+    // Police.prototype.say = function(){
+    //     alert('我叫'+this.age+'岁，'+this.name);
+    // }
+
+    // let p = new Police('王妍',17);
+    // let pp = new Person('杨丽春',16);
+
+    // p.say();
+    // // pp.say();
+
+
+
+    class Person {
+        constructor(name){
+            this.name = name;
+        }
+        say(){
+            alert(this.name);
+        }
+    }
+
+    class Police extends Person{
+        constructor(name,job){
+            super();
+            this.name = name;
+            this.job = job;
+        }
+        say(){
+            alert(this.name +'是'+ this.job);
+        }
+    }
+
+    let p = new Police('小黄','预言家');
+    p.say();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+</script>
+</body>
+</html>
