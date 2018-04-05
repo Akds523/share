@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style lang="">
+.y{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr>
+                    <td is="ppa"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script src="vue2.0.js"></script>
+<script>
+
+    Vue.component('ppa',{
+        template:`<li>你好</li>`
+    })
+
+    new Vue({
+        el:'#app'
+    }) 
+
+    
+
+</script>
+</body>
+</html>

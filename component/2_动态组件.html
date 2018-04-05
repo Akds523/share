@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style lang="">
+.y{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <button 
+            @click="fn(key)"
+            v-for="(val,key) in [1,2,3]" 
+            :class="{y:index===key}"
+        >{{val}}</button>
+        <keep-alive>
+            <div :is="currentView">123</div> 
+        </keep-alive>
+    </div>
+    </hr>
+<script src="vue2.0.js"></script>
+<script>
+    /*
+        keep-alive专门解决异步数据组件性能的问题。
+    */
+    var app = {
+        template: '<p>Welcome home!</p>'
+    }
+    const ppx = {
+        template:`<div>我是皮皮虾</div>`
+    }
+    const pap = {
+        template:`<div>我是pap</div>`
+    }
+
+    new Vue({
+        el:'#app',
+        data:{
+            currentView:'app',
+            index:0   
+        },
+        methods:{
+            fn(key){
+                this.currentView = ['app','ppx','pap'][key];
+                this.index = key;
+            }
+        },
+        components:{
+            app,
+            ppx,
+            pap
+        }
+    }) 
+
+    
+
+</script>
+</body>
+</html>

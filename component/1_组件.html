@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{val}}
+        <hr />
+        <app num="10" :pval="val" @pcv="changeVal"></app>
+    </hr>
+<script src="vue2.0.js"></script>
+<script>
+   
+    const app = {
+        template:`
+            <div>
+                <button @click="fn">修改父组件的内容</button>
+                <p>你好,{{num}},{{val}}</p>    
+            </div>
+        `,
+        data(){
+            return {
+                val:this.pval
+            }
+        },
+        methods:{
+            fn(){
+                this.val = this.val.replace('bj','北京');
+                this.$emit('pcv',this.val);
+            }
+        },
+        props:['num','pval']
+    }
+
+    Vue.component('app',app);
+
+    new Vue({
+        el:'#app',
+        data:{
+            val:'还是一样的味道，还是那么正宗----bj雾霾'    
+        },
+        methods:{
+            changeVal(newVal){
+                this.val = newVal;
+            }
+        }
+    }) 
+
+    
+
+</script>
+</body>
+</html>
