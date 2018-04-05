@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 2.关于用“索引”获取字符串每一项出现的兼容性问题:
+  // 		对于字符串也有类似于 数组 这样的通过 下标索引 获取每一项的值,
+	    var str="abcde";
+	    // alert(str[1]);
+	    //但是低版本的浏览器IE6,7不兼容
+	    //兼容方法:str.charAt(i)    //全部浏览器都兼容
+	    var str="abcde";
+	    for(var i=0;i<str.length;i++){
+	      alert(str.charAt(i));   //放回字符串中的每一项
+	    }
+	</script>
+</body>
+</html>

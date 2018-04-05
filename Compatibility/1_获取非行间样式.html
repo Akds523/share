@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top:100px;
+            left:150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+   <script>
+        
+       /*1.关于获取行外样式 currentStyle 和 getComputedStyle 出现的兼容性问题
+            我们都知道js通过style不可以获取行外样式，当我们需要获取行外样式时:
+            我们一般通过这两个方法获取行外样式：
+
+            IE下: currentStyle
+            Chrome,FF下: getComputedStyle(oDiv,false)
+
+            兼容两个浏览器的写法:*/
+            var oDiv = document.getElementById('div');
+            if(oDiv.currentStyle){
+                alert(oDiv.currentStyle.width);
+            }else{
+                alert(getComputedStyle(oDiv,false).width);
+            }
+
+        /*封装一个获取行外样式的函数:(兼容所有浏览器,包括低版本IE6,7)*/
+        // funtion getStyle(obj,name){
+        //     if(obj.currentStyle){
+        //         //IE
+        //         return obj.currentStyle[name];
+        //     }else{
+        //         //Chrom,FF
+        //         return getComputedStyle(obj,false)[name];
+        //     }
+        // }
+        
+        // getStyle(oDiv,'width');
+   </script>
+</body>
+</html>

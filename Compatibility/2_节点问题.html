@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script>
+		/* 2.关于使用 firstChild,lastChild 等，获取第一个/最后一个元素节点时产生的问题
+        --IE6-8下: firstChild,lastChild,nextSibling,previousSibling,获取第一个元素节点
+        (高版本浏览器IE9+,FF,Chrome不兼容,其获取的空白文本节点)
+     --高版本浏览器下: firstElementChild,lastElementChild,nextElementSibling,
+                    previousElementSibling
+      (低版本浏览器IE6-8不兼容)
+        --兼容写法: 找到ul的第一个元素节点,并将其背景色变成红色*/
+        var oUl=document.getElementById('ul');
+        if(oUl.firstElementChild){
+        //高版本浏览器
+        oUl.firstElementChild.style.background='red';
+        }else{
+        //IE6-8
+        oUl.firstChild.style.background='red';
+        }
+	</script>
+</body>
+</html>
