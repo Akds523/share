@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+   <button class="active">按钮一</button>
+   <button>按钮二</button>
+   <button>按钮三</button>
+   <div id="txt"></div>
+<script>
+
+    /*
+        当点击的时候，如果发现点击错误，这个时候会移出错误区域
+        但是，移动端默认，只要按下并且没有抬起，事件都在目标元素身上
+
+        误操作:
+            点击到错误区域之后，移出错误区域就不触发错误区域的代码
+
+
+    */
+    let arr = [11111,222222,333333]
+    const btns = Array.from(document.querySelectorAll('button'));
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    });
+    let b = btns[0];
+    let disX = 0;
+    let disY = 0;
+    btns.forEach((e,i)=>{
+        e.addEventListener('touchstart',function(ev){
+            disX = ev.changedTouches[0].clientX;
+            disY = ev.changedTouches[0].clientY;
+        })
+        e.addEventListener('touchend',function(ev){
+            let x = ev.changedTouches[0].clientX;
+            let y = ev.changedTouches[0].clientY;
+            if(Math.abs(x-disX) > 50 || Math.abs(y-disY) > 50){
+                //走了，误操作
+                return false;
+            }
+            b.className = '';
+            e.className = 'active';
+            txt.innerHTML = arr[i];
+            b = e;
+        })
+    })
+
+</script>
+</body>
+</html>

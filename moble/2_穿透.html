@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <title>Document</title>
+<style>
+body,html{
+    overflow-x: hidden;
+}
+
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position:absolute;
+    opacity: .4;
+    top:0;
+    left:0;
+  
+}
+#box2{
+    width:1000px;
+    height: 100px;
+    background:yellow;
+}
+</style>
+</head>
+<body>
+    <a href="http://www.baidu.com" id="a">点击就跳转</a>
+    <div id="box"></div>
+    <div id="box2">dsandsandjsadjsadsa</div>
+    <input type="text" id="t" />
+<script>
+/*
+    1.适配
+        flex布局必考
+        grid布局必考
+
+
+    2.事件
+        别的都是跟pc的js类似
+
+    移动端三大事件:
+        ontouchstart    手指按下
+        ontouchmove     手指移动
+        ontouchend      手指抬起
+
+    在移动端的事件中，只要在某个元素上触发了touchstart
+    那么默认只要不触发touchend，那么所有的焦点都在这个身元素上
+    所以移动端三大事件不用嵌套
+
+
+
+*/
+
+    // box.addEventListener('touchstart',start);
+    // box.addEventListener('touchmove',move);
+    box.addEventListener('touchend',start);
+
+    /*
+        当用户点击某个位置的时候，如果点击元素下有焦点元素
+        并且这个元素会消失或者飘逸，那么在300毫秒之后，页面还会监听到这个位置并触发这个
+        焦点元素。
+            比如:
+                a标签的跳转
+                input框的聚焦
+
+        解决:
+            取消焦点事件
+            document.addEventListener('touchstart',function(ev){
+                ev.preventDefault();
+            });
+
+        1.穿透
+        2.双指缩放
+        3.阻止橡皮筋效果
+        4.阻止长按选中
+
+        但是那么做，焦点元素就使用不了了，
+        比如
+            input框，点击之后不再聚焦
+        解决:
+            给input加上 ev.stopPropagation();
+
+
+    */
+
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    });
+
+    a.addEventListener('touchstart',function(ev){
+        window.location.href = ev.target.href;
+    });
+    // box2.addEventListener('touchstart',function(ev){
+    //     ev.stopPropagation();
+    // });
+
+    t.addEventListener('touchstart',function(ev){
+        ev.stopPropagation();
+    });
+
+
+    function start(){
+        // console.log('按下')
+        box.style.display = 'none';
+        // box.style.opacity = '0';
+        // box.style.visibility = 'hidden'; //只占位置，但是没有东西了
+        // setTimeout(function(){
+        //     box.style.left = 300 +'px';
+        // },100);
+    }
+    // function move(){
+    //     console.log('移动')
+    // }
+    // function end(){
+    //     console.log('抬起')
+    // }
+
+
+</script>
+</body>
+</html>

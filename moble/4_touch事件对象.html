@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <title>Document</title>
+<style>
+#box{
+    width:200px;
+    height: 200px;
+    background:#000;
+   
+    font-size:50px;
+    color: #fff;
+}
+#box2{
+    width:200px;
+    height: 200px;
+    background:red;
+   
+    font-size:50px;
+    color: #fff;
+}
+#p{
+    font-size:50px;
+}
+</style>
+</head>
+<body>
+    
+    <div id="box"></div>
+    <div id="box2"></div>
+    <p id="p"></p>
+<script>
+    /*
+        //能识别整个屏幕的手指
+        1.touches：当前位于屏幕上的所有手指的一个列表。(可以累加)
+        
+        //能够拿到当前DOM元素上的信息（指谁是谁）
+        2.targetTouches：位于当前DOM元素上的手指的一个列表。
+
+            只认当前触发事件的信息
+            如果第一次一根手指触发，会显示第一次的信息
+            第二次触发，只会跟新第二次的信息，不会与第一次累计
+        3.changedTouches：涉及当前事件的手指的一个列表。
+    */
+    document.addEventListener('touchmove',function(ev){
+        ev.preventDefault();
+    });
+
+    document.addEventListener('touchstart',start);
+    function start(ev){ 
+        p.innerHTML = ev.changedTouches.length;
+    }
+   
+
+</script>
+</body>
+</html>
