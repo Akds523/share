@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3-transform</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            text-align:center;
+            line-height:100px;
+        }
+        .box{
+            background-color:yellow;
+            transform:rotate(-45deg);
+            margin:0 auto;
+        }
+        .box1{
+            margin-left:300px;
+            background-color:pink;
+            transform:scale(0.5,2);
+        }
+        .box2{
+            margin-left:400px;
+            background-color:deepskyblue;
+            transform:skew(30deg,30deg);
+        }
+        .box3{
+            margin-left:500px;
+            background:#b4f9ff;
+            /*transform:translate(50px,50px);*/
+            transform:translate(50px);
+        }
+    </style>
+</head>
+<body>
+<div class="box">示例文字</div>
+<div class="box1">示例文字1</div>
+<div class="box2">示例文字2</div>
+<div class="box3">示例文字3</div>
+</body>
+</html>

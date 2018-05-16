@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不改变基准点-改变基准点</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            text-align:center;
+            line-height:100px;
+            display:inline-block;
+        }
+        .box1{
+            background-color:yellow;
+        }
+        /*.box2{*/
+            /*background-color:deepskyblue;*/
+            /*transform:rotate(45deg);*/
+        /*}*/
+        .box2{
+            background-color:deepskyblue;
+            transform:rotate(45deg);
+            transform-origin:left bottom;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">原来</div>
+<div class="box2">改变</div>
+</body>
+</html>

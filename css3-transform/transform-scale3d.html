@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d缩放 移动 倾斜</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .box{
+            width:100px;
+            height:100px;
+            background-color:yellow;
+            text-align:center;
+            line-height:100px;
+            /*transform:scaleX(0.5) scaleY(1.5) scaleZ(1);*/
+            /*transform:skewX(30deg) skewY(45deg);*/
+            /*transform:translateX(100px) translateY(50px) translateZ(50px);*/
+            /*transform:translate(150px,150px);*/
+            transform:matrix(1,0,0,1,220,220);
+        }
+    </style>
+</head>
+<body>
+<div class="box">缩放</div>
+</body>
+</html>
