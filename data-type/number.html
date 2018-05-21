@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型转换</title>
+</head>
+<body>
+<script>
+    //parseInt() 取整 、转进制
+    var a = '20px';
+    console.log(parseInt(a));
+    console.log(typeof (parseInt(a)));//number
+    var b = '  -20px';
+    console.log(parseInt(b));//-20
+    console.log(typeof(parseInt(b)));
+    var c = '';
+    console.log(parseInt(c));//NaN
+    console.log(typeof(parseInt(c)));//number
+    console.log(parseInt(0x12));//18 16进制
+    console.log(parseInt('101',2));
+
+    var d = {};
+    console.log(d.toString());
+    console.log(typeof(d.toString()));//string
+</script>
+
+</body>
+</html>
