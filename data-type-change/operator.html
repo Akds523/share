@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运算符</title>
+</head>
+<body>
+<script>
+    //number()强制类型转换
+    var num1 = Number('hello world');//NaN Number()转不出来则为NaN 其中不包含任何有意义的数值
+    console.log(num1);
+    var num2 = Number('');//0 Number转空字符串为0
+    console.log(num2);
+    var num3 = Number(false);//0 注意 false和‘false’ 不一样前一个是布尔值，后一个是字符串
+    console.log(num3);
+    var num4 = Number(null);//0 转null为0
+    console.log(num4);
+    var num5 = Number(undefined);//NaN 转undefined为NaN
+    console.log(num5);
+    var num6 = Number(1.2);
+    console.log(typeof num6);
+    var num7 = Number(0xf);//15 0xf 的十进制为15
+    console.log(num7);
+</script>
+</body>
+</html>

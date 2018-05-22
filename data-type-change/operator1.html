@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作符-一元运算符</title>
+</head>
+<body>
+<script>
+    //递增、递减操作符
+//    //前置型
+    var age = 29;
+    ++ age;
+    console.log(age);//30
+    var age1 = 29;
+    age1 = age1 + 1;
+    console.log(age1);//30 所以前置型就相当于 这个
+    var age2 = 29;
+    age2 = age2 - 1;
+    console.log(age2);
+    var age3 = 29;
+    -- age3;
+    console.log(age3);
+    var age4 = 29;
+    var anotherage = -- age4 + 2;
+    console.log(age4);//28 前递增或者递减，是在运算之前就自增或者自减的
+    console.log(anotherage);//30
+    //后置型
+    var age5 = 29;
+    age5 ++;
+    console.log(age5);
+    var age6 = 29;
+    age6 -- ;
+    console.log(age6);
+    var age7 = 29;
+    var anotherage1 = age7 -- +2;
+    var age8 = age7 + 1;
+    console.log(age7);//29
+    console.log(anotherage1);//31
+    console.log(age8);//29
+    //加减运算符
+    var num = 25;
+    num = + num;
+    console.log(num);
+</script>
+</body>
+</html>
