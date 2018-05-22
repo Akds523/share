@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟函数重载</title>
+</head>
+<body>
+<script>
+    function myFunc(){
+        var argulen = arguments.length;
+        if(argulen > 3){ //第一种情况 参数大于3个，返回最后一个
+            return arguments[argulen - 1];
+        }
+        if(argulen < 3){
+            var numFlag = true;//假设全为数字
+            var strFlag = false;
+            for(var i=0;i<argulen;++i){
+//                if(typeof arguments[i] !== 'number'){
+//                    numFlag = false;
+//                }
+                if(typeof arguments[i] === 'string'){
+                    strFlag = true;
+                    numFlag = false;
+                    break;
+                }
+            }
+            //console.log(strFlag);
+//            console.log(typeof arguments);
+            if(numFlag){//第二种情况 参数小于3个并且都是数字
+                var args = [].slice.call(arguments,0);//转成数组
+                if(args[argulen-1]%2 === 0){
+                    return args.sort(function(a,b){
+                        return a-b;//升序，因为最后一位是偶数
+                    })
+                }else{
+                    return args.sort(function(a,b){
+                        return b-a;//降序，因为最后一个是奇数
+                    })
+                }
+            }
+
+            if(strFlag){//第三种情况 包含字符串，强制转为字符串联接返回
+                var result = "";
+                //console.log(typeof arguments);
+                for(var i=0;i<argulen;++i){
+                    result += String(arguments[i]);
+                }
+                return result;
+            }
+        }
+        return;
+    }
+    console.log(myFunc(1,2,3,4));
+    console.log(myFunc(6,10));
+    console.log(myFunc(10,5));
+    console.log(myFunc('ni',8));
+    console.log(myFunc(7,'mi'));
+</script>
+</body>
+</html>

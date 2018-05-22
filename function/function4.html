@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+<body>
+<script>
+    function myFunc(){
+        var argulen = arguments.length;
+        if(argulen > 3){
+            return arguments[argulen - 1];
+        }
+        if(argulen < 3){
+            var numFlag = true;
+            var strFlag = false;
+            for(var i=0;i<argulen;++i){
+                if(typeof arguments[i] === 'string'){
+                    strFlag = true;
+                    numFlag = false;
+                    break;
+                }
+            }
+            if(numFlag){
+                var arge = [].slice.call(arguments,0);
+                if(arge[arguments[i]%2 === 0]){
+                   return arge.sort(function(a,b){
+                          return a-b;
+                })
+                }else{
+                    return arge.sort(function(a,b){
+                        return b-a;
+                    })
+                }
+            }
+            if(strFlag){
+                var str = "";
+                for(var i=0;i<argulen;++i){
+                    str += String(arguments[i])
+                }
+                return str;
+            }
+        }
+        return;
+    }
+    console.log(myFunc(1,2,3,4));
+    console.log(myFunc(1,3));
+    console.log(myFunc(3,4));
+    console.log(myFunc('ni',4));
+</script>
+</body>
+</html>
