@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script>
+    function myFunc(){
+        var argulen = arguments.length;
+        if(argulen >= 3){//true
+            return arguments[argulen - 1];
+        }
+        if(argulen < 3){
+            var numFlag = true;
+            var strFlag = false;
+            for(var i=0;i<argulen;i++){
+                if(typeof arguments[i] === 'string'){
+                    strFlag = true;
+                    numFlag = false;
+                    break;
+                }
+            }
+            if(numFlag){
+                var args = [].slice.call(arguments,0);
+                if(arguments[argulen-1] %2 === 0){
+                       return  args.sort(function(a,b){
+                           return a-b;
+                    })
+                }else{
+                    return args.sort(function(a,b){
+                        return b-a;
+                    })
+                }
+            }
+            if(strFlag){
+                var str = '';
+                for(var i=0;i<argulen;i++){
+                    str += String(arguments[i])
+                }
+                return str;
+            }
+        }
+        return;
+    }
+    console.log(myFunc(1,2,3,4));
+    console.log(myFunc(1,2));
+    console.log(myFunc(9,11));
+    console.log(myFunc('ni',3));
+    console.log(myFunc('ni','ni'));
+</script>
+</body>
+</html>
