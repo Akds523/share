@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replace</title>
+</head>
+<body>
+<script>
+    let str = 'sdfsd';
+    console.log(str.replace(/fs/,'gf'));
+    console.log(str.replace(/d/,function($0,$1,$2,$3,$4){
+        console.log($0);
+        console.log($1);
+        console.log($2);
+        console.log($3);
+    }))
+</script>
+</body>
+</html>
