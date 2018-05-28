@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regexp</title>
+</head>
+<body>
+<input type="text" id='t'/>
+<input type="button" id="btn" value="天堂">
+<script>
+    /*
+     let str = '2018-1-2';
+     console.log(str.replace(/(\d+)\D+(\d+)\D+(\d+)/,function($0,$1,$2,$3){
+     //        console.log($1,$2,$3);
+     return $1 +'年' + $2 +'月' + $3 + '日';
+     }))
+     let str = '2018../-/01.----___---dsja24';
+     console.log(str.replace(/(\d+)\D+(\d+)\D+(\d+)/,function($0,$1,$2,$3){
+     //console.log($1,$2,$3);
+
+     return $1 + '年' + $2 + '月' + $3 + '日';
+     }));
+    */
+    const t = document.getElementById('t');
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click',function(){
+        let tv = t.value;
+        if(/^(1[89])$|^([2-9][0-9])$|^(10[0-9])$|^110$/.test(tv)){
+            window.location.href = 'http://www.miaov.com'
+        }else{
+            alert('不满18岁')
+        }
+    });
+    let str = 'miaov ke ta类似ng';
+
+    console.log(str.replace(/\b/g,'|'));
+</script>
+</body>
+</html>
