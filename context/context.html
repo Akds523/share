@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var color = 'blue';
+    function changeColor(){
+        var anotherColor = 'red';
+        function swapColors(){
+            var tempColor = anotherColor;//red
+            anotherColor = color;//blue
+            color = tempColor;//red
+            return color;
+        }
+        console.log(swapColors());//red
+        return color;
+    }
+    console.log(changeColor());//blue
+</script>
+</body>
+</html>

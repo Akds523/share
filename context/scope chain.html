@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延长作用域链</title>
+</head>
+<body>
+<script>
+    function bulidUrl(){
+        var qs = '?debug = true';
+        with(location){
+            var url = href +qs;
+        }
+        return url;
+    }
+    console.log(bulidUrl());
+</script>
+</body>
+</html>
