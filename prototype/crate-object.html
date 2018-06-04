@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂模式</title>
+</head>
+<body>
+<script>
+    /*  function createPerson(name,age,job){
+     var o = new Object();
+     o.name = name;
+     o.age = age;
+     o.job = job;
+     o.sayName = function(){
+     console.log(this.name);
+     };
+     return o;
+     }
+     var person1 = createPerson('nicholas',29,'Software Engineer');
+     var person2 = createPerson('gerg',24,'Doctor');
+     console.log(person1);
+     console.log(person2);*/
+   function createPerson(name,age,job){
+       var o = {};
+       o.name = name;
+       o.age = age;
+       o.job = job;
+       o.sayName = function(){
+           console.log(this);
+           return (this.name);
+       };
+       return o;
+   }
+   let person1 = createPerson('qin',24,'Software Engineer');
+   let person2 = createPerson('liu',24,'devops');
+   console.log(person1);
+   console.log(person2);
+   console.log(person1.sayName());
+   console.log(person2.sayName());
+</script>
+</body>
+</html>

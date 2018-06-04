@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数模式</title>
+</head>
+<body>
+<script>
+    /*function Person(name,age,job){
+     this.name = name;
+     this.age = age;
+     this.job = job;
+     this.sayName = function(){
+     return (this.name);
+     };
+     }
+     let person1 = new Person('qin',24,'Software Engineer');
+     let person2 = new Person('liu',24,'devops');
+     console.log(person1.constructor === Person);
+     console.log(person2.constructor === Person);
+     console.log(typeof person1.sayName());
+     Person('greg',24,'doctor');
+     console.log(window.sayName());
+     var o = new Object();
+     Person.call(o,'kristen',24,'nurse');
+     console.log(o.sayName());*/
+   /***************************************************/
+   /* function Person(name,age,job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = new Function(console.log(this.name))
+    }
+    let person1 = new Person('qin',24,'Software Engineer');
+    let person2 = new Person('liu',24,'devops');*/
+   /********************************************************/
+   function Person(name,age,job){
+       this.name = name;
+       this.age = age;
+       this.job = job;
+       this.sayName = sayName;
+   }
+   function sayName(){
+       console.log(this.name)
+   }
+    let person1 = new Person('qin',24,'Software Engineer');
+    let person2 = new Person('liu',24,'devops');
+    console.log(person1);
+</script>
+</body>
+</html>

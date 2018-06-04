@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hasOwnProperty</title>
+</head>
+<body>
+<script>
+    function Person(){}
+    Person.prototype.name = 'nicholas';
+    Person.prototype.age = 23;
+    Person.prototype.job = 'Software Engineer';
+    Person.prototype.sayName = function(){
+        console.log(this.name)
+    };
+    var person1 = new Person();
+    var person2 = new Person();
+//    var keys = Object.keys(Person.prototype);
+//    console.log(keys);
+    var p1 = new Person();
+    p1.name = 'rpb';
+    p1.age = 23;
+    var p1Keys = Object.keys(p1);
+    console.log(p1Keys);
+    var keys  = Object.getOwnPropertyNames(Person.prototype);
+    console.log(keys);
+//    console.log(person1.hasOwnProperty('name'));
+//    console.log('name' in person1);
+    person1.name = 'greg';
+//    console.log(person1.hasOwnProperty('name'));
+//    console.log('name' in person1);
+//    delete person1.name;
+//    console.log(person1.hasOwnProperty('name'));
+
+//    function hasPrototypeProperty(object,name){
+//        return !Object.hasOwnProperty(name) && (name in object);
+//    }
+//    console.log(hasPrototypeProperty(person1,'greg'));
+//    console.log(hasPrototypeProperty(person1,'name'));
+//    var o = {
+//        toString:function(){
+//            return 'my Object';
+//        }
+//    };
+//    for (var prop in o){
+//        if(prop == 'toString'){
+//            console.log('found toString')
+//        }
+//    }
+</script>
+</body>
+</html>

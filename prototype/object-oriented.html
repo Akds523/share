@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象-理解对象</title>
+</head>
+<body>
+<script>
+    var person = new Object();
+    person.name = 'nicholas';
+    person.age = 29;
+    person.job = 'Software Engineer';
+    person.sayName = function(){
+        console.log(this);
+        console.log(this.name);
+    };
+//    person.sayName();
+    var person1 = {
+        name:'nicholas',
+        age :29,
+        job:'Software Engineer',
+        sayName:function(){
+//            console.log(this.name)
+        }
+    };
+//    person1.sayName();
+    var person2 = {};
+    Object.defineProperty(person2,'name',{
+        writable:false,
+        value:'nicholas'
+    });
+//    console.log(person2.name);
+    person2.name = 'greg';
+//    console.log(person2.name);
+    var person3 = {};
+    Object.defineProperty(person3,'name',{
+        configurable:false,
+        value:'nicholas'
+    });
+//    console.log(person3.name);
+//    delete person.name;
+//    console.log(person3.name);
+    var book = {
+        _year:2004,
+        edition:1
+    };
+    Object.defineProperty(book,'year',{
+        get:function(){
+            return this._year
+        },
+        set:function(newValue){
+            if(newValue > 2004){
+                this._year = newValue;
+                this.edition += newValue - 2004;
+            }
+        }
+    });
+    book.year = 2005;
+//    console.log(book.edition);
+    var book1 = {};
+    Object.defineProperties(book1,{
+        _year:{
+            writable:true,
+            value:2004
+        },
+        edition:{
+            writable:true,
+            value:1
+        },
+        year:{
+            get:function(){
+                return this._year;
+            },
+            set:function(newValue){
+                if(newValue > 2004){
+                    this._year = newValue;
+                    this.edition += newValue - 2004;
+                }
+            }
+        }
+    });
+//    var descriptor = Object.getOwnPropertyDescriptor(book1,'_year');
+//    console.log(descriptor.value);
+//    console.log(descriptor.configurable);
+//    console.log(typeof descriptor.get);
+    var descriptor = Object.getOwnPropertyDescriptor(book1,'year');
+        console.log(descriptor.value);
+        console.log(descriptor.configurable);
+        console.log(typeof descriptor.get);
+</script>
+</body>
+</html>

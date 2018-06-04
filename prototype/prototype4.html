@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组合构造函数和原型模式</title>
+</head>
+<body>
+<script>
+    /*
+     function Person(name,age,job){
+     this.name = name;
+     this.age = age;
+     this.job = job;
+     this.friends = ['shelby','court'];
+     }
+     Person.prototype = {
+     constructor:Person,
+     sayName:function(){
+     return (this.name);
+     }
+     };
+     var person1 = new Person('nicholas',27,'Software Engineer');
+     var person2 = new Person('greg',27,'doctor');
+     person1.friends.push('van');
+     console.log(person1.friends);
+     console.log(person2.friends);
+     console.log(person1.sayName());
+     console.log(person2.sayName());
+     console.log(person1.friends === person2.friends);
+     console.log(person1.sayName === person2.sayName);
+    */
+
+    /*
+    动态模式
+     function Person(name,age,job){
+     this.name = name;
+     this.age = age;
+     this.job = job;
+     if(typeof this.sayName != 'function'){
+     Person.prototype.sayName = function(){
+     console.log(this.name)
+     };
+     }
+     }
+     var friend = new Person('nicholas',29,'Software Engineer');
+     friend.sayName();
+    */
+    /////寄生构造函数模式////
+    /*
+    */
+    function Person(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+            console.log(this.name)
+        };
+        return o;
+    }
+    var friend = new Person('nicholas',29,'Software Engineer');
+    friend.sayName();
+</script>
+</body>
+</html>
