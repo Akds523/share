@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab{
+            width:300px;
+            height:300px;
+            background:gray;
+        }
+        #tab .inp{
+            border:1px;
+        }
+        #tab input{
+            width:80px;
+            height:40px;
+            background:blue;
+            color:#fff;
+            margin-left:13px;
+            border:0;
+            padding:0;
+            outline:none;
+        }
+        #tab .active{
+            background:#fff;
+            color:red;
+        }
+        #tab .content{
+            height:240px;
+            text-align:center;
+            line-height:240px;
+            color:#fff;
+            display:block;
+        }
+        #tab div{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <span class="inp">
+        <input type="button" value="tab1" class="active" />
+        <input type="button" value="tab2" />
+        <input type="button" value="tab3" />
+    </span>
+    <div class="content">11111</div>
+    <div>22222</div>
+    <div>33333</div>
+</div>
+<script>
+    const tab = document.getElementById('tab');
+    const btn = tab.getElementsByTagName('input');
+    const box = tab.getElementsByTagName('div');
+    for(var i=0;i<btn.length;i++){
+        btn[i].index = i;
+        btn[i].onclick = function(){
+            for(var i=0;i<btn.length;i++){
+                btn[i].className = '';
+                box[i].className = '';
+            }
+            this.className = 'active';
+            box[this.index].className = 'content';
+        }
+    }
+</script>
+</body>
+</html>

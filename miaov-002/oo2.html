@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定点清除选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab{
+            width:300px;
+            height:300px;
+            background:#545f60;
+        }
+        #tab .inp{
+            border:1px;
+        }
+        #tab input {
+            width: 90px;
+            height: 40px;
+            background: #6edeef;
+            border: 0;
+            padding: 0;
+            margin-left: 5px;
+            outline: none;
+        }
+
+        #tab .content{
+            display:block;
+        }
+        #tab div{
+            height:240px;
+            color:#fff;
+            text-align:center;
+            line-height:240px;
+            display:none;
+        }
+        #tab .active{
+            background:#fff;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+         <span class="inp">
+                    <input type="button" value="tab1" class="active"/>
+                    <input type="button" value="tab2"/>
+                    <input type="button" value="tab3"/>
+         </span>
+        <div class="content">这是tab1的内容</div>
+        <div>这是tab2的内容</div>
+        <div>这是tab3的内容</div>
+    </div>
+    <script>
+        const tab = document.getElementById('tab');
+        const btn = tab.getElementsByTagName('input');
+        const box = tab.getElementsByTagName('div');
+        let n1 = btn[0];
+        for(var i=0;i<btn.length;i++){
+            btn[i].index = i;
+            btn[i].onclick = function(){
+                n1.className = '';
+                box[n1.index].className = '';
+                this.className = 'active';
+                box[this.index].className = 'content';
+                n1 = this;
+            }
+        }
+    </script>
+</body>
+</html>

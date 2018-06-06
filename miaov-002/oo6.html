@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+//        var obj = {};
+        this.name = name;
+        this.age = age;
+//        this.say = function(){
+//            alert(this.name);
+//        };
+    }
+//    Person.say = function(){
+//        console.log('Person 的 say');
+//    };
+//    Object.prototype.say = function(){
+//      console.log('Object 原型的 say ');
+//    };
+    Person.prototype.say = function(){
+      console.log('Person 原型 say');
+    };
+//    Function.prototype.say = function(){
+//      console.log('Function 原型的 say');
+//    };
+
+//    let p1 = new Person('qin',24);
+//    p1.say();
+//    let p = new Person('qin',24);
+//    p.say();
+    let p = new Person('qin',24);
+    Person.say();
+</script>
+</body>
+</html>
