@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型小例子</title>
+</head>
+<body>
+<script>
+   /****************求和小例子*****/
+   /* let arr = [1,2,3,4,5];
+    let arr2 = [43,65];
+    Array.prototype.sum = function(){
+    console.log(this);
+    var result = 0;
+    for(var i=0;i<this.length;i++){
+    result += this[i]
+    }
+    return result;
+    };
+    console.log(arr.sum());
+    console.log(arr2.sum());*/
+   /***************原型模式************************/
+   function Person(name,age,job){
+       console.log(this);
+       this.name = name;
+       this.age = age;
+       this.job = job;
+   }
+   Person.prototype.say = function(){
+       alert(this.name);
+   };
+//   Person('qin',24,'en');
+   let p = new Person('qin',24,'Engineer');
+   let p1 = new Person('liu',24,'devops');
+   p.say();
+   p1.say();
+</script>
+</body>
+</html>

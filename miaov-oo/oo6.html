@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            border:1px solid red;
+            display:block;
+        }
+        div{
+            display:none;
+        }
+        .but{
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+    <input type = "button" value = '选项一' class="but"/>
+    <input type = "button" value = '选项二'/>
+    <input type = "button" value = '选项三'/>
+    <div class="box">一的内容</div>
+    <div>二的内容</div>
+    <div>三的内容</div>
+    <script>
+    /*    let btn = document.getElementsByTagName('input');
+     let box = document.getElementsByTagName('div');
+     for(var i=0;i<btn.length;i++){
+     btn[i].index = i;
+     //            console.log(i);
+     btn[i].onclick = function(){
+     for(var i=0;i<btn.length;i++){
+     btn[i].className = '';
+     box[i].className = '';
+     }
+     this.className = 'but';
+     box[this.index].className = 'box';
+     }
+     }*/
+        let btn = document.getElementsByTagName('input');
+        let box = document.getElementsByTagName('div');
+        for(var i=0;i<btn.length;i++){
+            btn[i].onclick = function(){
+                alert(i);
+            }
+        }
+    </script>
+</body>
+</html>

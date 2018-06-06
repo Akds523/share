@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new</title>
+</head>
+<body>
+<script>
+ /*对象
+ *  let obj = new Object();
+  obj.name = 'xiao';
+  obj.say = function(){
+  alert(obj.name)
+  };
+  obj.say();*/
+/*let {log,dir} = console;
+ let fn = function(){
+ alert('1');
+ log(this);
+ return function fn3(){};
+ };
+ //fn();
+ let f = new fn;
+ log(f);*/
+function Person(name,age){
+//    console.log(this);
+//    var obj = {};
+//    obj.name = name;
+//    obj.age = age;
+//    obj.say = function(){
+//        return (this.name)
+//    };
+//    return obj;
+    this.name = name;
+    this.age = age;
+//    this.say = function(){
+//        alert(this.name);
+//    }
+}
+let p = new Person('qin',24);
+// p.say();
+Person.prototype.say = function(){
+  console.log(this.name);
+};
+let p1 = new Person('liu',24);
+let p2 = new Person('qinL',24);
+p1.say();
+p2.say();
+console.log(p1.say);//整个函数体
+console.log(p1.say == p2.say);
+let arr = [];
+let arr2 = [];
+console.log(arr == arr2);
+</script>
+</body>
+</html>

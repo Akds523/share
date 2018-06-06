@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>妙味-初识面向对象</title>
+</head>
+<body>
+<script>
+    function teacher(name,age,t){
+        var name  = name;
+        var age = age;
+        var t = t;
+        return {
+            name,
+            age,
+            t,
+            sayName:function(){
+                alert(this.name)
+            }
+        }
+    }
+    let t1 = teacher('leo',18,'web');
+    console.log(t1.t);
+    t1.sayName();
+</script>
+</body>
+</html>
