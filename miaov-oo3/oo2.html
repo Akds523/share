@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hasOwnProperty</title>
+</head>
+<body>
+<script>
+    function Person(name){
+        this.name = name;
+        this.age = 24;
+    }
+    Person.prototype.num = 20;
+    Person.num2 = 30;
+    let p = new Person('qin');
+//    let p2 = new Person('liu',24);
+    console.log(p.num);
+    console.log(p.hasOwnProperty('age'));
+    console.log(Person.hasOwnProperty('num2'));
+    console.log(p.hasOwnProperty('qin'));
+    console.dir(Person);
+    console.dir(p);
+</script>
+</body>
+</html>

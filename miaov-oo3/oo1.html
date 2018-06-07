@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>constructor</title>
+</head>
+<body>
+<script>
+    function Person(name){
+        this.name = name;
+        this.say = function(){
+            alert(this.name);
+        }
+    }
+    let obj = {
+        constructor:Person,
+        a:10,
+        b:20,
+        say:function(){
+            alert(this.a)
+        },
+        say2:function(){
+            alert(this.b)
+        }
+    };
+//    console.dir(Person);
+    Person.prototype = obj;
+    console.log(obj.constructor);
+    let p = new Person('qin');
+    p.say();
+    console.log(p.constructor);
+</script>
+</body>
+</html>

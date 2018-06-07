@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>每天一练习</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab{
+            width:300px;
+            height:300px;
+            background:gray;
+        }
+        #tab .inp{
+            border:1px;
+        }
+        #tab input{
+            width:80px;
+            height:40px;
+            background:blue;
+            margin-left:12px;
+            border:0;
+            outline:none;
+            color:#fff;
+        }
+        #tab .active{
+            background:#fff;
+            color:red;
+        }
+        #tab div{
+            display:none;
+        }
+        #tab .content{
+            display:block;
+            height:240px;
+            text-align:center;
+            line-height:240px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <span class="inp">
+    <input type="button" value="tab1" class="active"/>
+    <input type="button" value="tab2"/>
+    <input type="button" value="tab3"/>
+    </span>
+    <div class="content">11111111</div>
+    <div>22222222</div>
+    <div>33333333</div>
+</div>
+<script>
+    /****************************求和小练习，数组求和原理************************************/
+   /* let arr = [1,2,3,4,5];
+    let arr2 = [4,9,11];
+    Array.prototype.sum = function(){
+    var result = 0;
+    for(var i=0;i<this.length;i++){
+    result += this[i];
+    }
+    return result;
+    };
+    console.log(arr.sum());
+    console.log(arr2.sum());*/
+   /******************************选项卡大清洗***************************************/
+   /*const tab = document.getElementById('tab');
+    const btn = tab.getElementsByTagName('input');
+    const box = tab.getElementsByTagName('div');
+    for(var i=0;i<btn.length;i++){
+    btn[i].index = i;
+    btn[i].onclick = function(){
+    for(var i=0;i<btn.length;i++){
+    btn[i].className = '';
+    box[i].className = '';
+    }
+    this.className = 'active'
+    box[this.index].className = 'content';
+    }
+    }*/
+   /*******************************选项卡定点清除******************************/
+   /*const tab = document.getElementById('tab');
+    const btn = tab.getElementsByTagName('input');
+    const box = tab.getElementsByTagName('div');
+    let n = btn[0];
+    for(var i=0;i<btn.length;i++){
+    btn[i].index = i;
+    btn[i].onclick = function(){
+    n.className = '';
+    box[n.index].className = '';
+    this.className = 'active';
+    box[this.index].className = 'content';
+    n = this;
+    }
+    }*/
+   /********************************小实验********************************/
+   let arr = [1,2,3,4,5];
+//   console.log(arr[2]);
+   for(var i=0;i<arr.length;i++){
+       arr[i].index = i;
+       setTimeout(function(){
+           console.log(index);
+       },1000)
+   }
+</script>
+</body>
+</html>

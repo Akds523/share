@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义属性</title>
+    <style>
+        input{
+            width:80px;
+            height:40px;
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="0">
+<input type="button" value="0">
+<input type="button" value="0">
+<input type="button" value="0">
+<script>
+    const btn = document.getElementsByTagName('input');
+    let arr = ['A','B','C','D'];
+//    for(var i=0;i<btn.length;i++){
+//        btn[i].num = 0;
+//        btn[i].onclick = function(){
+//             this.value = arr[this.num];
+//             this.num ++;
+//             if(this.num === arr.length){
+//                 this.num = 0;
+//             }
+//        }
+//    }
+//    for(var i=0;i<btn.length;i++){
+//        btn[i].index = i;
+//        btn[i].onclick = function(){
+//            console.log(this.index);
+//        };
+//    }
+//    for(var i=0;i<btn.length;i++){
+//        btn[i].num = 0;
+//        btn[i].onclick = function(){
+//            this.value = arr[this.num];
+//            this.num ++;
+//            if(this.num === arr.length){
+//                this.num = 0;
+//            }
+//        }
+//    }
+    for(var i=0;i<btn.length;i++){
+        btn[i].index = i;
+        btn[i].onclick = function(){
+            this.value = arr[this.index];
+            this.index ++;
+            if(this.index === arr.length){
+                this.index = 0;
+            }
+        }
+    }
+</script>
+</body>
+</html>
