@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab{
+            width:300px;
+            height:300px;
+            background:gray;
+        }
+        #tab .inp{
+            border:1px;
+        }
+        #tab input{
+            width:80px;
+            height:40px;
+            background:blue;
+            color:#fff;
+            border:0;
+            margin-left:12px;
+            outline:none;
+        }
+        #tab .active{
+            background:#fff;
+            color:red;
+        }
+        #tab div{
+            display:none;
+        }
+        #tab .content{
+            height:240px;
+            color:#fff;
+            text-align:center;
+            line-height:240px;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+        <div class="content">1111111</div>
+        <div>2222222</div>
+        <div>3333333</div>
+    </div>
+    <script>
+        function Tab(id){
+            this.tab = document.getElementById(id);
+            this.btn = tab.getElementsByTagName('input');
+            this.box = this.tab.getElementsByTagName('div');
+            this.init();
+//            console.log(this.tab);
+//            console.log(this.btn);
+        }
+        Tab.prototype.init = function(){
+            this.Events();
+        };
+        Tab.prototype.Events = function(type='click'){
+            let that = this;//Tab
+            for(let i=0;i<this.btn.length;i++){
+                this.btn[i].index = i;
+                this.btn[i].addEventListener(type,function(){
+//                    console.log(this);
+                    that.changeTab(this);//*****
+                })
+            }
+        };
+        Tab.prototype.changeTab = function(that){
+            for(let i=0;i<this.btn.length;i++){
+                this.btn[i].className = '';
+                this.box[i].className = '';
+            }
+            that.className = 'active';
+            this.box[that.index].className = 'content';
+        };
+        let t = new Tab('tab');
+    </script>
+</body>
+</html>

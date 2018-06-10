@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab{
+            width:300px;
+            height:300px;
+            background:gray;
+        }
+        #tab .inp{
+            border:1px;
+        }
+        #tab input{
+            width:80px;
+            height:40px;
+            background:blue;
+            color:#fff;
+            border:0;
+            margin-left:12px;
+            outline:none;
+        }
+        #tab .active{
+            background:#fff;
+            color:red;
+        }
+        #tab div{
+            display:none;
+        }
+        #tab .content{
+            height:240px;
+            color:#fff;
+            text-align:center;
+            line-height:240px;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+        <div class="content">1111111</div>
+        <div>2222222</div>
+        <div>3333333</div>
+    </div>
+    <script>
+       /********************普通方法****************************/
+       /* const tab = document.getElementById('tab');
+        const btn = tab.getElementsByTagName('input');
+        const box = tab.getElementsByTagName('div');
+        for(var i=0;i<btn.length;i++){
+        btn[i].index = i;
+        btn[i].onclick = function(){
+        for(var i=0;i<btn.length;i++){
+        btn[i].className = '';
+        box[i].className = '';
+        }
+        this.className = 'active';
+        box[this.index].className = 'content';
+        }
+        }*/
+       /*********************面向对象***********************************/
+       function Tab(){
+           this.tab = document.getElementById('tab');
+           this.btn = tab.getElementsByTagName('input');
+           this.box = tab.getElementsByTagName('div');
+           this.timer = null;
+           this.num = 0;
+       }
+       Tab.prototype.Events = function(type='onclick'){
+           let _this = this;
+           for(let i=0;i<this.btn.length;i++){
+             this.btn[i][type] = function(){
+                 _this.changeTab(i);
+             }
+         }
+       };
+       Tab.prototype.changeTab = function(index){
+           for(let i=0;i<this.btn.length;i++){
+               this.btn[i].classList.remove('active');
+               this.box[i].classList.remove('content');
+           }
+           this.btn[index].classList.add('active');
+           this.box[index].classList.add('content');
+       };
+       Tab.prototype.autoPlay = function(){
+           this.timer = setInterval(()=>{
+               this.num ++;
+               this.num %= this.btn.length;
+               this.changeTab(this.num);
+           },1000)
+       };
+       let t = new Tab;
+       t.Events();
+       t.autoPlay();
+    </script>
+</body>
+</html>
