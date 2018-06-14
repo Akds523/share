@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向过程-选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab,#tab2{
+            width:300px;
+            height:300px;
+            background:gray;
+            margin-right:40px;
+        }
+        #tab .inp,#tab2 .inp{
+            border:1px;
+        }
+        #tab input,#tab2 input{
+            width:80px;
+            height:40px;
+            background:blue;
+            color:#fff;
+            border:0;
+            margin-left:12px;
+            outline:none;
+        }
+        #tab .active,#tab2 .active{
+            background:#fff;
+            color:red;
+        }
+        #tab div,#tab2 div{
+            display:none;
+        }
+        #tab .content,#tab2 .content{
+            height:240px;
+            color:#fff;
+            text-align:center;
+            line-height:240px;
+            display:block;
+        }
+        button{
+            width:100px;
+            height:30px;
+            margin-left:14px;
+            background:black;
+            color:darkgoldenrod;
+            outline:none;
+            border:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+        <div class="content">1111111</div>
+        <div>2222222</div>
+        <div>3333333</div>
+    </div>
+    <div id="tab2">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+        <div class="content">1111111</div>
+        <div>2222222</div>
+        <div>3333333</div>
+    </div>
+    <button>点击第二个启动</button>
+    <button>点击第一个停止</button>
+    <button>点击两个一起动</button>
+    <button>点击反向动</button>
+    <script>
+        cTab('tab',true);
+        cTab('tab2');
+
+        function cTab(id,onOff){
+            const tab = document.getElementById(id);
+            const btn = tab.getElementsByTagName('input');
+            const box = tab.getElementsByTagName('div');
+            const changeBtn = document.getElementsByTagName('button');
+            tab.timer = null;
+            tab.num = 0;
+            tab.onOff = onOff;
+
+            for(var i=0;i<btn.length;i++){
+                btn[i].index = i;
+                btn[i].onclick = function(){
+                    for(var i=0;i<btn.length;i++){
+                        btn[i].className = '';
+                        box[i].className = '';
+                    }
+                    this.className = 'active';
+                    box[this.index].className = 'content';
+                }
+            }
+
+            if(tab.onOff){
+                tab.timer = setInterval(function(){
+                    tab.num ++;
+                    tab.num %= btn.length;
+                    for(var i=0;i<btn.length;i++){
+                        btn[i].className = '';
+                        box[i].className = '';
+                    }
+                    btn[tab.num].className = 'active';
+                    box[tab.num].className = 'content';
+                },1000)
+            }
+
+            changeBtn[0].onclick = function(){
+                cTab('tab2',true);
+            };
+            changeBtn[1].onclick = function(){
+                const tab = document.getElementById('tab');
+                clearInterval(tab.timer);
+            }
+        }
+    </script>
+</body>
+</html>

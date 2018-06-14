@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #tab,#tab2{
+            width:300px;
+            height:300px;
+            background:gray;
+            margin-right:40px;
+        }
+        #tab .inp,#tab2 .inp{
+            border:1px;
+        }
+        #tab input,#tab2 input{
+            width:80px;
+            height:40px;
+            background:blue;
+            color:#fff;
+            border:0;
+            margin-left:12px;
+            outline:none;
+        }
+        #tab .active,#tab2 .active{
+            background:#fff;
+            color:red;
+        }
+        #tab div,#tab2 div{
+            display:none;
+        }
+        #tab .content,#tab2 .content{
+            height:240px;
+            color:#fff;
+            text-align:center;
+            line-height:240px;
+            display:block;
+        }
+        button{
+            width:100px;
+            height:40px;
+            background-color:#000;
+            color:darkgoldenrod;
+            outline:none;
+            border:0;
+            margin-left:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+    <div class="content">1111111</div>
+    <div>2222222</div>
+    <div>3333333</div>
+</div>
+<div id="tab2">
+        <span class="inp">
+            <input type="button" value="tab1" class="active"/>
+            <input type="button" value="tab2"/>
+            <input type="button" value="tab3"/>
+        </span>
+    <div class="content">1111111</div>
+    <div>2222222</div>
+    <div>3333333</div>
+</div>
+<button id="btn1">点击第二个启动</button>
+<button id="btn2">点击第一个停止</button>
+<button id="btn3">点击两个都启动</button>
+<button id="btn4">点击反向动</button>
+<script>
+    function Tab(id){
+        this.tab = document.getElementById(id);
+        this.btn = this.tab.getElementsByTagName('input');
+        this.box = this.tab.getElementsByTagName('div');
+        this.timer = null;
+        this.num = 0;
+    }
+    Tab.prototype.Events = function(type='click'){
+        let that = this;
+        for(let i=0;i<this.btn.length;i++){
+            this.btn[i].addEventListener(type,function(){
+                that.changeTab(i);
+//                console.log(i);
+            })
+        }
+    };
+    Tab.prototype.changeTab = function(index){
+        for(let i=0;i<this.btn.length;i++){
+            this.btn[i].className = '';
+            this.box[i].className = '';
+        }
+        this.btn[index].className = 'active';
+        this.box[index].className = 'content';
+    };
+    Tab.prototype.autoPlay = function(){
+        clearInterval(this.timer);
+        this.timer = setInterval(()=>{
+            this.num ++;
+            this.num %= this.btn.length;
+            this.changeTab(this.num);
+        },1000)
+    };
+    Tab.prototype.stop = function(){
+        clearInterval(this.timer);
+        this.timer = null;
+    };
+    Tab.prototype.isStop = function(){
+        if(this.timer){
+            return false;
+        }else{
+            return true;
+        }
+    };
+    let t = new Tab('tab');
+    t.Events();
+    t.autoPlay();
+
+    let t2 = new Tab('tab2');
+    t2.Events();
+
+    btn1.onclick = function(){
+        t2.autoPlay();
+    };
+    btn2.onclick = function(){
+        t.stop();
+    };
+    btn3.onclick = function(){
+        t2.autoPlay();
+        t.autoPlay();
+    };
+    btn4.onclick = function(){
+        if(t2.isStop()){
+            t2.autoPlay();
+        }else{
+            t2.stop();
+        }
+        if(t.isStop()){
+            t.autoPlay();
+        }else{
+            t.stop();
+        }
+    };
+</script>
+</body>
+</html>
