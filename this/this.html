@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script>
+    /*********************函数this*****************************/
+    /* function fn(){
+     console.log(this);
+     }
+     //    document.onclick = fn();//点击谁就是谁
+     fn();//直接调用window*/
+    /**********************对象this****************************/
+   /* let obj = {
+    name : 'qin',
+    fn:function(){
+    console.log(this);
+    console.log(this.name);
+    }
+    };
+    obj.fn();
+    //    console.dir(window);*/
+   /***************************定时器this**************************/
+ /*  let obj = {
+  name : 'qin',
+  fn:function(){
+  console.log(this);
+  console.log(this.name);
+  }
+  };
+  obj.fn();
+  setInterval(obj.fn,1000);
+  document.onclick = function(){
+  setInterval(()=>{
+  "use strict";
+  console.log(this);
+  },1000)
+  }*/
+ /****************************其他**********************************/
+ /*function a(xx){
+  this.x = xx;
+  return this;//window
+  }
+  var x = a(4);
+  var y = a(5);
+  console.dir(window);
+  // console.log(x.x);//undefined
+  // console.log(y.x);//5*/
+ /***************************构造函数**************************/
+ /*function Tab(){
+  console.log(this);
+  }
+  let t = new Tab();
+  console.log(typeof t);*/
+ /*******************严格模式****************************/
+ /*function fn(){
+  'use strict';
+  console.log(this);
+  }
+  fn();*/
+/* let fn = function(){
+ 'use strict';
+ console.log(this);
+ };
+ fn();*/
+
+//     function foo(){
+//         console.log(this.a);
+//     }
+//     var a = 3;
+//     var obj = {
+//         a: 2,
+//         foo: foo
+//     };
+//     obj.foo();
+
+     function foo() {
+         console.log( this.a )
+     }
+     var obj2 = {
+         a: 42,
+         foo: foo
+     };
+     var obj1 = {
+         a: 2,
+         obj2: obj2
+     };
+     obj1.obj2.foo();
+</script>
+</body>
+</html>

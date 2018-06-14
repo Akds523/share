@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script>
+    /*var name = 'The window';
+     var object = {
+     name : 'My Object',
+     getNameFunc : function(){
+     //            return this.name;
+     return function (){
+     return this.name; //this window
+     }
+     }
+     };
+     console.log(object.getNameFunc()());*/
+   /*
+     var name = 'The window';
+    var object = {
+    name : 'My object',
+    getNameFunc : function(){
+    var that = this;
+    return function(){
+    return that.name;
+    }
+    }
+    };
+    console.log(object.getNameFunc()());*/
+   var name = 'The window';
+   var object = {
+       name : 'My object',
+       getNameFunc : function(){
+           return this.name;
+       }
+   };
+   console.log(object.getNameFunc());
+   console.log((object.getNameFunc)());
+   console.log((object.getName = object.getNameFunc)());
+</script>
+</body>
+</html>
