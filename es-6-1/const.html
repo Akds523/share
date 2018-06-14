@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es-6-const</title>
+</head>
+<body>
+<script>
+//    if(true){
+//        console.log(n);
+//        const n = 3;
+////        console.log(n);
+//    }
+//    console.log(n);
+  /*  const foo = {};
+   foo.prop = 123;
+   console.log(foo.prop);
+   foo = {};
+   console.log(foo);*/
+ /*
+  const a = [];
+  a.push('hello');
+  a.length = 0;
+  console.log(a);
+  a = ['world'];
+  console.log(a);
+ */
+ const a = Object.freeze({});
+ a.prop = 12;
+ console.log(a.prop);
+</script>
+</body>
+</html>

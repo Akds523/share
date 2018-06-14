@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es-6-let</title>
+</head>
+<body>
+<script>
+    /*******************不同1********************/
+    /*
+     {
+     let a = 1;
+     var b = 2;
+     }
+     //    console.log(a);
+     console.log(b);
+    */
+   /*********************不同2*******************/
+   /*
+    var a = [];
+    for(let i=0;i<4;i++){
+    //       console.log(i);
+    a[i] = function(){
+    console.log(i)
+    }
+    }
+    a[1]();
+    //   console.log(i);
+    var a = [];
+    for(var i=0;i<4;i++){
+    //       console.log(i);
+    a[i] = function(){
+    //            console.log(i);
+    }
+    }
+    a[2]();
+    //    console.log(i);
+   */
+//   for(let i=0;i<5;i++){
+//       let i = 'abc';
+//       console.log(i);
+//   }
+   /*********************不同3*******************/
+   /*
+    var a = 123;
+    if(true){
+    a = 'abc';
+    //       console.log(a);
+    let a
+    //       console.log(a);
+    a = 123;
+    console.log(a);
+    }
+    //   console.log(a);
+   */
+  /*//   var s = 'hello';
+   //   for(var i=0;i<5;i++){
+   ////       console.log(s[i]);
+   //   }
+   //   console.log(i);*/
+//   var tmp = new Date();
+//   function f(){
+//       console.log(tmp);
+//       if(false){
+//          var tmp = 'Hello World';
+//          console.log(tmp);
+//       }
+//   }
+//   f();
+
+//   function fn(){
+//       let n = 5;
+//       if(true){
+//           let n = 10;
+//           console.log(n);
+//       }
+//       console.log(n);
+//   }
+//   fn();
+
+//    function fn(){
+//        var n = 5;
+//        if(true){
+//            var n = 10;
+//            console.log(n);
+//        }
+//        console.log(n);
+//    }
+//    fn();
+//    function f() {
+//        console.log('I am outside!');
+//    }
+    (function () {
+        if (false) {
+            // 重复声明一次函数f
+            function f() {
+                console.log('I am inside!');
+            }
+        }
+
+        f();
+    }());
+</script>
+</body>
+</html>
