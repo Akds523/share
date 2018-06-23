@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拷贝继承</title>
+</head>
+<body>
+<script>
+    /*********************赋值****************************/
+    /*let arr = [1,2,3];
+     let arr2 = arr;
+     arr2.push(3);
+     console.log(arr2);
+     console.log(arr);*/
+    let arr = [1,2,3,4,5,[6,7,[8,9]]];
+    /**********************利用数组方法*****************************/
+//    let arr2 = arr;
+//    arr2.push(4);
+//    let arr2 = arr.concat();
+//    let arr2 = arr.map(e=>e);
+    /***********************利用循环数组的方式****************************/
+//    let arr2 = [];
+//    for(let i=0;i<arr.length;i++){
+//        arr2[i] = arr[i];
+//    }
+    /************************利用继承-拷贝继承********************************/
+//    let arr2 = Object.assign([],arr);
+//    let arr2 = [];
+//    for(attr in arr){
+////        console.log(attr);
+//        arr2[attr] = arr[attr];
+//    }
+    let arr2 = JSON.parse(JSON.stringify(arr));
+    arr2.push(2);
+    console.log(arr2);
+    console.log(arr);
+</script>
+</body>
+</html>

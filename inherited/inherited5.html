@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类式继承</title>
+</head>
+<body>
+<script>
+    /**********************简版**********************/
+    /*class Person{
+     constructor(name,age){
+     this.name = name;
+     this.age = age;
+     console.log(this);
+     }
+     say(){
+     console.log(this.name);
+     }
+     running(){
+     alert(this.name + 'Running');
+     }
+     }
+     let p = new Person('da',24);
+     //    p.say();
+     //    p.running();
+     console.log(p);*/
+    /**********************复杂版************************/
+    class Police extends Person{
+        constructor(name,age,job){
+           super(name,age);
+           this.job = job;
+        }
+        sayName(){
+            console.log(this.name)
+        };
+        skills(){
+            alert('会查人');
+        };
+    }
+    let p = new Person('davy',24);
+    let p2 = new Police('xiao',24,'police');
+    p.sayName();
+    p.sk8uills();
+    p2.sayName();
+    p2.skills();
+    console.log(p);
+    console.log(p2);
+</script>
+</body>
+</html>
