@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理-跨浏览器</title>
+</head>
+<body>
+<input type="button" value="Click Me" id="myBtn"/>
+<script>
+    let EventUtil = {
+        addHandler:function(element,type,handler){
+            if(element.addEventListener){
+                element.addEventListener(type,handler,false);
+            }else if(element.attachEvent){
+                element.attachEvent('on' + type,handler);
+            }else{
+                element['on' + type] = handler;
+            }
+        },
+        removeHandler:function(element,type,handler){
+            if(element.removeEventListener){
+                element.removeEventListener(type,handler,false);
+            }else if(element.detachEvent){
+                element.detachEvent('on' + type,handler);
+            }else{
+                element['on' + type] = handler;
+            }
+        }
+    };
+    const btn = document.getElementById('myBtn');
+    let handler = function(){
+        console.log('clicked');
+    };
+    EventUtil.addHandler(btn,'click',handler);
+//    EventUtil.removeHandler(btn,'click',handler);
+</script>
+</body>
+</html>

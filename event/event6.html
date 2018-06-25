@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间对象-type</title>
+</head>
+<body>
+<input type="button" value="click me" id="myBtn"/>
+<input type="button" value="dom2" id="myBtn2">
+<script>
+    const btn = document.getElementsByTagName('input');
+    let handler = function(event){
+        switch(event.type){
+            case 'click':
+                console.log('clicked');
+                break;
+            case 'mouseover':
+                console.log(event.type);
+                console.log(event.target);
+                event.target.style.backgroundColor = 'red';
+                break;
+            case 'mouseout':
+                event.target.style.backgroundColor = '';
+                break;
+        }
+    };
+    btn[0].onclick = handler;
+    btn[0].onmouseover = handler;
+    btn[0].onmouseout = handler;
+</script>
+</body>
+</html>

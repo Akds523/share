@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理-作用域</title>
+</head>
+<body>
+<input type="button" title="hello" value="click me HTML" onclick="alert(this.title)"/>
+<input type="button" title="hello" value="click me Handler" onclick="show()"/>
+<input type="button" title="hello" value="click me DOM0" id="btn"/>
+<input type="button" title="hello" value="click me DOM2" id="btn1"/>
+<script>
+    function show(){
+        alert(this.title);//这里的this window
+    }
+    const btn = document.getElementById('btn');
+    btn.onclick = function(){
+        alert(this.title);
+    };
+    const btn2 = document.getElementById('btn1');
+    btn2.addEventListener('click',function(){
+        alert(this.title);
+    });
+</script>
+</body>
+</html>

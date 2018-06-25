@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+</head>
+<body>
+<input type="button" value="click me" onclick="showMessage()">
+<input type="button" value="click me" id="btn">
+<script>
+    /******************html标签内事件处理**************************/
+    function showMessage(){
+     alert('Hello World');
+     }
+    /*********************dom0事件处理*************************/
+    /**/
+    const btn = document.getElementById('btn');
+//    btn.onclick = function(){
+//        alert('Hello World');
+//    };
+    /**********************dom2事件处理***********************/
+    btn.addEventListener('click',function(){
+        alert('Hello World')
+    })
+</script>
+</body>
+</html>

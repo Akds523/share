@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间对象</title>
+</head>
+<body>
+<input type="button" value="click me" id="myBtn"/>
+<input type="button" value="dom2" id="myBtn2">
+<a href="event4.html" id='myLink'>跳转</a>
+<script>
+    /*const btn = document.getElementById('myBtn');
+     btn.onclick = function(event){
+     alert(event.type);
+     };
+     const btn2 = document.getElementById('myBtn2');
+     btn2.addEventListener('click',function(event){
+     console.log(event.type);
+     },false)*/
+    const btn = document.getElementById('myBtn');
+    btn.onclick = function(event){
+//        console.log(this);//this===event.target
+//        console.log(event);
+        console.log('clicked');
+        event.stopPropagation();
+    };
+    document.body.onclick = function(event) {
+//        console.log(event.target);
+//        console.log(this);
+        console.log('body clicked');
+    }
+//    btn.onclick = function(event){
+//        event.preventDefault()
+//    }
+//    const link = document.getElementById('myLink');
+//    link.onclick = function(event){
+//        event.preventDefault();
+//    }
+</script>
+</body>
+</html>
