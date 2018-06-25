@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托（时间代理）</title>
+</head>
+<body>
+<ul id="myLists">
+    <li id="goSomewhere">Go somewhere</li>
+    <li id="doSomething">Do something</li>
+    <li id="sayHi">say hi</li>
+</ul>
+<script>
+    /*let EventUtil = {
+     addHandler:function(element,type,handler){
+     if(element.addEventListener){
+     element.addEventListener(type,handler,false);
+     }else if(element.attachEvent){
+     element.attachEvent('on' + type,handler);
+     }else{
+     element['on' + type] = handler;
+     }
+     },
+     removeHandler:function(element,type,handler){
+     if(element.removeEventListener){
+     element.removeEventListener(type,handler,false);
+     }else if(element.detachEvent){
+     element.detachEvent('on' + type,handler);
+     }else{
+     element['on' + type] = handler;
+     }
+     }
+     };*/
+    function EventUtil(){
+    }
+    EventUtil.prototype.addHandler = function(element,type,handler){
+        if(element.addEventListener){
+            element.addEventListener(type,handler,false);
+        }else if(element.attachEvent){
+            element.attachEvent('on' + type,handler,false);
+        }else{
+            element['on' + type] = handler;
+        }
+    };
+    EventUtil.prototype.removeHandler = function(element,type,handler){
+        if(element.removeEventListener){
+            element.removeEventListener(type,handler,false);
+        }else if(element.detachEvent){
+            element.detachEvent('on' + type,handler,false);
+        }else{
+            element['on' + type] = handler;
+        }
+    };
+    EventUtil.prototype.getEvent = function(event){
+      return event ? event : window.event;
+    };
+    EventUtil.prototype.getTarget = function(event){
+        return event.target || event.scrElement;
+    };
+    EventUtil.prototype.preventDefault = function(){
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue = false;
+        }
+    };
+    EventUtil.prototype.stopPropagation = function(){
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble = true;
+        }
+    };
+    let Event = new EventUtil;
+    const list = document.getElementById('myLists');
+    Event.addHandler(list,'click',function(event){
+         event = Event.getEvent(event);
+        var target = Event.getTarget(event);
+        switch(target.id){
+            case 'doSomething':
+                document.title = 'I changed the document is title';
+                break;
+            case 'goSomewhere':
+                location.href = 'http://www.wrox.com';
+                break;
+            case 'sayHi':
+                alert('hi');
+                break;
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="btn"/>
+<script>
+    const btn = document.getElementById('btn');
+    btn.onclick = function(event){
+        event = btn.getEvent(event);
+        console.log(event);
+    }
+</script>
+</body>
+</html>
