@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq-dom && dom-jq</title>
+    <script src="http://lib.sinaapp.com/js/jquery/1.3.1/jquery.js"></script>
+    <script>
+//        $(function(){
+//            let $cr = $('#cr');
+//            let cr = $cr[0];
+//            $cr.click(function(){
+//                if(cr.checked){
+//                    alert('感谢支持');
+//                }
+//            })
+//        })
+        $(function(){
+            let $cr = $('#cr');
+            $cr.click(function(){
+                if($cr.is(':checked')){
+                    alert('thank you');
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="checkbox" id="cr"/>
+</body>
+</html>

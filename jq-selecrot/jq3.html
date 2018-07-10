@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>selecrot</title>
+</head>
+<body>
+<input type="checkbox" value="1" name="check" checked="checked"/>
+<input type="checkbox" value="2" name="check" />
+<input type="checkbox" value="3" name="check" checked="checked"/>
+<input type="button" value="你选中的个数" id="btn"/>
+<script>
+    const btn = document.getElementById('btn');
+    btn.onclick = function(){
+        let arr = [];
+        let items = document.getElementsByName('check');
+        for(var i=0;i<items.length;i++){
+            if(items[i].checked){
+                arr.push(items[i].value);
+            }
+        }
+        alert('选中的个数为：' + arr.length);
+    }
+</script>
+</body>
+</html>
