@@ -1,0 +1,95 @@
+#content{
+    width:1000px;
+    height:524px;
+    background:url(../images/box-bg.png) no-repeat;
+    margin:0 auto;
+    padding-top:164px;
+}
+div.main{
+    width:660px;
+    height:328px;
+    margin:0 auto;
+    background:#fff;
+    padding:32px 50px 0;
+}
+h2.title{
+    font-size:16px;
+    line-height:48px;
+    height:51px;
+    background:url(../images/ball.png) no-repeat left 12px;
+    border-top:2px solid #e7788d;
+    color:#e7788d;
+    padding-left:32px;
+}
+/*-----------------project---------------------*/
+.project{
+    height:145px;
+    border-bottom:2px dashed #e5e5e5;
+}
+.project dl{
+    width:100px;
+    float:left;
+    margin-right:40px;
+}
+.project dl:last-child{
+    margin-right:0;
+}
+.project dl dt{
+    width:87px;
+    height:82px;
+    border:1px solid #e5e5e5;
+    padding:16px 0 0 11px;
+}
+.project dl dd{
+    line-height:34px;
+    font-size:15px;
+    text-align:center;
+}
+.project dl dd a{
+    color:#3a3a3a;
+}
+/*-------------------link----------------------*/
+div.link{
+    margin-top:29px;
+}
+div.link p{
+    margin-bottom:10px;
+}
+strong.link_bt{
+    width:100px;
+    height:30px;
+    float:left;
+    line-height:30px;
+    color:#fff;
+    background-color:#e7788d;
+    text-align:center;
+    margin-left:3px;
+    margin-right:6px;
+}
+div.link a.link1{
+    float:left;
+    width:92px;
+    text-align:center;
+    color:#a5a5a5;
+    font-size:14px;
+    line-height:28px;
+}
+div.link span{
+    width:1px;
+    height:16px;
+    background-color:#a5a5a5;
+    float:left;
+    margin-top:7px;
+}
+div.link a.spe{
+    width:116px;
+}
+div.link a.more{
+    float:right;
+    color:#a5a5a5;
+    font-size:14px;
+    line-height:28px;
+}
+div.link a:hover{
+    color:#ed9aa9;
+}
