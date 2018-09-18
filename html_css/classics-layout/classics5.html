@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            min-width:550px;
+        }
+        .public{
+            width:80%;
+            margin:0 auto;
+        }
+        #header{
+            height:100px;
+            background:#ffffcc;
+        }
+        #footer{
+            height:80px;
+            background:#ccffff;
+        }
+        .clome{
+            float:left;
+            height:500px;
+        }
+        /*#section{*/
+            /*height:500px;*/
+        /*}*/
+        #middle{
+            width:100%;
+            background:#9c3e3c;
+        }
+        #left{
+            width:200px;
+            background:#00ff06;
+            margin-left:-100%;
+        }
+        #right{
+            width:200px;
+            background:#00a877;
+            margin-left:-200px;
+        }
+        #center{
+            margin:0 200px;
+            height:500px;
+        }
+    </style>
+</head>
+<body>
+<header id="header" class="public">header</header>
+<section id="section" class="public">
+    <div id="middle" class="clome">
+        <div id="center">center</div>
+    </div>
+    <div id="left" class="clome">left</div>
+    <div id="right" class="clome">right</div>
+</section>
+<footer id="footer" class="public">footer</footer>
+</body>
+</html>

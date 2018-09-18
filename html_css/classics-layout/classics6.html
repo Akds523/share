@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>classics</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            min-width:550px;
+        }
+        .public{
+            width:80%;
+            margin:0 auto;
+        }
+        #header{
+            height:100px;
+            background:#ffffcc;
+        }
+        #footer{
+            height:80px;
+            background:#00a877;
+        }
+        /*#main{*/
+            /*height:500px;*/
+            /*background:#9c3e3c;*/
+        /*}*/
+        .wrap{
+            float:left;
+            height:500px;
+        }
+        #left{
+            background:#AFAFAF;
+            margin-left:-100%;
+            width:200px;
+        }
+        #right{
+            background:#9c3e3c;
+            margin-left:-200px;
+            width:200px;
+        }
+        #center{
+            margin:0 200px;
+            height:500px;
+            background:#00a6e3;
+        }
+        #content{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<header id="header" class="public">header</header>
+<section id="main" class="public">
+    <div id="content" class="wrap">
+        <div id="center">center</div>
+    </div>
+    <div id="left" class="wrap">left</div>
+    <div id="right" class="wrap">right</div>
+</section>
+<footer id="footer" class="public">footer</footer>
+</body>
+</html>
