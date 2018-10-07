@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .main{
+            width:100%;
+            border:10px solid #0A1800;
+            /*height:100px;*/
+            overflow:hidden;
+            /*position:absolute;*/
+        }
+        .clean::after{
+            content:'';
+            display:block;
+            clear:both;
+        }
+        .left{
+            width:200px;
+            height:100px;
+            float:left;
+            border:1px solid #ff2c4f;
+        }
+        .right{
+            width:200px;
+            float:left;
+            height:100px;
+            border:1px solid #00a6e3;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main" >
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+
+</body>
+</html>
