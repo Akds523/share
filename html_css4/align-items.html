@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-items</title>
+    <style>
+    #container{
+        display:flex;
+        border:5px solid blue;
+        flex-direction:row;
+        width:600px;
+        align-items:center;
+    }
+    #text-a{
+        background:orange;
+        width:100px;
+        font-size:12px;
+        align-self:flex-start;
+    }
+    #text-b{
+        background:yellow;
+        width:150px;
+        font-size:24px;
+    }
+    #text-c{
+        background-color:limegreen;
+        width:200px;
+        font-size:36px;
+    }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="text-a">示例文字a</div>
+    <div id="text-b">示例文字b</div>
+    <div id="text-c">示例文字c</div>
+</div>
+</body>
+</html>
