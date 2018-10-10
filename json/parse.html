@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>parse</title>
+</head>
+<body>
+<script>
+    var book = {
+        title:'Professional JavaScript',
+        authors:[
+            'nicholas c.zakas'
+        ],
+        edition:3,
+        year:2011,
+       releaseDate:new Date(2018,10,9)
+    };
+    var jsonText = JSON.stringify(book);
+    var bookCopy = JSON.parse(jsonText,function(key,value){
+        if(key == "releaseDate"){
+            return new Date(value);
+        }else{
+            return value;
+        }
+    });
+    console.log(bookCopy);
+</script>
+</body>
+</html>
