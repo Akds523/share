@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多个元素使用flex</title>
+    <style>
+        #container{
+            display:flex;
+            border:5px solid blue;
+            flex-direction:column;
+            width:600px;
+            height:300px;
+        }
+        #text-a,#text-b,#text-c{
+            box-sizing:border-box;
+            font-size:1.5em;
+            font-weight:bold;
+            /*width:150px;*/
+            /*flex-grow:1;*/
+            /*flex-shrink:1;*/
+            /*width:250px;*/
+            flex:250px;
+        }
+        #text-a{
+            background:orange;
+        }
+        #text-b{
+            background:yellow;
+            /*flex-grow:3;*/
+            /*flex-shrink:3;*/
+            flex:1 3 250px;
+        }
+        #text-c{
+            background:limegreen;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="text-a">示例文字a</div>
+    <div id="text-b">示例文字b</div>
+    <div id="text-c">示例文字c</div>
+</div>
+</body>
+</html>

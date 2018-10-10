@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float缺点</title>
+    <style>
+        #left-sidebar{
+            float:left;
+            width:200px;
+            padding:20px;
+            background:orange;
+        }
+        #contents{
+            float:left;
+            width:300px;
+            padding:20px;
+            background:yellow;
+        }
+        #right-sidebar{
+            float:left;
+            width: 200px;
+            padding:20px;
+            background:limegreen;
+        }
+        #left-sidebar,#contents,#right-sidebar{
+            box-sizing:border-box;
+            -moz-box-sizing:border-box; /* Firefox */
+            -webkit-box-sizing:border-box;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="left-sidebar">
+        <h2>左侧边栏</h2>
+        <ul>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+        <h2>内容</h2>
+        <p>示例文字示例文字示例文字示例文字示例文字示例文字
+            示例文字示例文字示例文字示例文字示例文字示例文字
+            示例文字示例文字</p>
+    </div>
+    <div id="right-sidebar">
+        <h2>右侧边栏</h2>
+        <ul>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

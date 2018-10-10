@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消除空白</title>
+    <style>
+        #container{
+            display:-moz-box; /* Firefox */
+            display:-webkit-box; /* Safari and Chrome */
+            /*display:box;*/
+            /*display:flex;*/
+            flex-direction:row;
+            border:5px solid blue;
+            -moz-box-orient:horizontal;
+            -webkit-box-orient:horizontal;
+            width:500px;
+            height:300px;
+        }
+        #text-a{
+            background-color:orange;
+            -moz-box-flex:1.0;
+            -webkit-box-flex:1.0;
+        }
+        #text-b{
+            background-color:yellow;
+            /*flex:1;*/
+            -moz-box-flex:2.0;
+            -webkit-box-flex:2.0;
+        }
+        #text-c{
+            background-color:limegreen;
+            -moz-box-flex:1.0;
+            -webkit-box-flex:1.0;
+        }
+        #text-a,#text-b,#text-c{
+            box-sizing:border-box;
+            font-size:1.5em;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="text-a">示例文字a</div>
+    <div id="text-b">示例文字b</div>
+    <div id="text-c">示例文字c</div>
+</div>
+</body>
+</html>

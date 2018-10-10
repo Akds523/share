@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>column-box</title>
+    <style>
+        #container{
+            column-count:3;
+            -moz-column-count:3;
+            -webkit-column-count:3;
+        }
+        #left-sidebar,#contents,#right-sidebar{
+            padding:20px;
+            box-sizing:border-box;
+        }
+        #left-sidebar{
+            background-color:orange;
+        }
+        #contents{
+            background-color:yellow;
+        }
+        #right-sidebar{
+            background-color:limegreen;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="left-sidebar">
+        <h2>左侧边栏</h2>
+        <ul>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+        <h2>内容</h2>
+        <p>示例文字示例文字示例文字示例文字示例文字示例文字
+            示例文字示例文字示例文字示例文字示例文字示例文字
+            示例文字示例文字</p>
+    </div>
+    <div id="right-sidebar">
+        <h2>右侧边栏</h2>
+        <ul>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+            <li><a href="">超链接</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

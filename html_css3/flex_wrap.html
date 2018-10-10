@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-wrap</title>
+    <style>
+        #container{
+            display:flex;
+            border:5px solid blue;
+            /*flex-direction:row;*/
+            /*flex-wrap:wrap-reverse;*/
+            flex-flow:row nowrap;
+            width:500px;
+            height:300px;
+        }
+        #text-a{
+            background-color:orange;
+        }
+        #text-b{
+            background:yellow;
+        }
+        #text-c{
+            background-color:limegreen;
+        }
+        #text-a,#text-b,#text-c{
+            box-sizing:border-box;
+            font-size:1.5em;
+            font-weight:bold;
+            width:250px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="text-a">示例文字a</div>
+    <div id="text-b">示例文字b</div>
+    <div id="text-c">示例文字c</div>
+</div>
+</body>
+</html>
