@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时刷新</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<ul id="oul"></ul>
+<script src="ajax-1.js"></script>
+<script>
+    let btn = document.getElementById('btn');
+    btn.onclick = function(){
+        ajax();
+        setInterval(function(){
+            ajax();
+        },1000)
+    }
+</script>
+</body>
+</html>

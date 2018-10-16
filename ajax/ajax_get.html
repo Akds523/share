@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<script>
+    let btn = document.getElementById('btn');
+    btn.onclick = function(){
+	//console.log(1);
+        var xhr = null;
+        try{
+            xhr = new XMLHttpRequest();
+        }catch(e){
+            xhr = new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        xhr.open('get','get.php?username='+encodeURI('刘')+'&age=er&'+ new Date().getTime(),true);
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    alert(xhr.responseText);
+                }else{
+                    alert('error '+ xhr.status);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
