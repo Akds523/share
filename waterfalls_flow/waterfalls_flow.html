@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <link rel="stylesheet" href="waterfalls_flow.css">
+</head>
+<body>
+<ul id="container">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div id="loading">
+    <img height="50" src="1.gif" >
+</div>
+<script src="ajax.js"></script>
+<script>
+    const container = document.getElementById('container');
+    let lis = container.getElementsByTagName('li');
+    let lisLen = lis.length;
+	let page = 1;
+	let onOff = true;
+	getList();
+    function getList(){
+	 loading.style.opacity = 1;
+		ajax({
+			method:'get',
+			url:'getPics.php',
+			data:{cpage:page},
+			dataType:'json',
+			success:function(data){
+				if(!data.length){
+					return;
+				}
+				for(var i=0;i<data.length;i++){
+					//创建元素
+					let div = document.createElement('div');
+					div.className = 'pic';
+					let img = new Image();
+					img.src = data[i].preview;
+					div.appendChild(img);
+					let p = document.createElement('p');
+					p.innerText = data[i].title;
+					div.appendChild(p);
+					img.onload = function(){
+						let m = getShort();
+						lis[m].appendChild(div);
+					}
+				}
+				onOff = true;
+				 setTimeout(function(){
+					loading.style.opacity = 0;
+				},500)
+			}
+		});
+	}
+	window.onscroll = function(){
+		var _index = getShort();
+        var oLi = lis[_index];
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(getTop(oLi)+oLi.offsetHeight < document.documentElement.clientHeight + scrollTop){
+			if(onOff){
+				onOff = false;
+				page ++;
+				getList();
+			}
+        }
+	}
+    //最短li
+    function getShort(){
+        let index = 0;
+        let ih = lis[index].offsetHeight;
+        for(var i=1;i<lisLen;i++){
+            if(lis[i].offsetHeight < ih){
+                index = i;
+                ih = lis[i].offsetHeight;
+            }
+        }
+        return index;
+    }
+	function getTop(obj){
+		let iTop = 0;
+		while(obj){
+			iTop += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return iTop;
+	}
+</script>
+</body>
+</html>
