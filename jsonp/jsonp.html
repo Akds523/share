@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域</title>
+</head>
+<body>
+<input id='btn' value='按钮' type='button'/>
+<ul id='ulQ'></ul>
+<input id='btn2' value='按钮' type='button'/>
+<ul id='ulQ2'></ul>
+<script>
+function fn1(data){
+	//alert(data);
+	const ulQ = document.getElementById('ulQ');
+	let html = '';
+	for(var i=0;i<data.length;i++){
+	   html += '<li>'+data[i]+'</li>';
+	}
+	ulQ.innerHTML = html;
+}
+function fn2(data){
+	//alert(data);
+	const ulQ2 = document.getElementById('ulQ2');
+	let html = '';
+	for(var i=0;i<data.length;i++){
+	   html += '<li>'+data[i]+'</li>';
+	}
+	ulQ2.innerHTML = html;
+}
+</script>
+<!--<script src="1.txt"></script>-->
+<script>
+const btn = document.getElementById('btn');
+
+btn.onclick = function(){
+  /*  ************按需添加***************
+	let script = document.createElement('script');
+	script.src = '1.txt';
+	document.body.appendChild(script);
+  */
+	let script = document.createElement('script');
+	script.src = 'getData.php?callback=fn1';
+	document.body.appendChild(script);
+}
+ const btn2 = document.getElementById('btn2');
+
+btn2.onclick = function(){
+  /*  ************按需添加***************
+	let script = document.createElement('script');
+	script.src = '1.txt';
+	document.body.appendChild(script);
+  */
+	let script = document.createElement('script');
+	script.src = 'getData.php?t=str&callback=fn2';
+	document.body.appendChild(script);
+} 
+</script>
+</body>
+</html>
