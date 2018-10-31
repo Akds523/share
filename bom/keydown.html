@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘控制</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #div{
+            width:100px;
+            height:100px;
+            background:red;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script>
+    let div = document.getElementById('div');
+    let timer = null;
+    document.onkeydown = function(ev){
+        clearInterval(timer);
+        timer = setInterval(function(){
+//            switch(ev.keyCode){
+//                case 37:
+//                    div.style.left = div.offsetLeft - 10 + 'px';
+//                    break;
+//                case 38:
+//                    div.style.top = div.offsetTop - 10 + 'px';
+//                    break;
+//                case 39:
+//                    div.style.left = div.offsetLeft + 10 + 'px';
+//                    break;
+//                case 40:
+//                    div.style.top = div.offsetTop + 10 + 'px';
+//                    break;
+//            }
+            if(ev.keyCode == 37){
+                div.style.left = div.offsetLeft - 10 + 'px';
+            }
+            if(ev.keyCode == 38){
+                div.style.top = div.offsetTop - 10 + 'px';
+            }
+            if(ev.keyCode == 39){
+                div.style.left = div.offsetLeft + 10 + 'px';
+            }
+            if(ev.keyCode == 40){
+                div.style.top = div.offsetTop + 10 + 'px';
+            }
+        },10)
+    }
+    document.onkeyup = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+</head>
+<body>
+<input type="button" value="点击变色" />
+<input type="button" value="点击更新search" />
+<input type="button" value="点击更新hash" />
+<script>
+    function getQueryStringArgs(){
+        var qs = (location.search.length > 0 ? location.search.substring(1) : " ");
+        args = {};
+        items = qs.length ? qs.split('&') : [],
+        item = null,
+            name = null,
+            value = null,
+            i = 0,
+            len = items.length;
+        for(i=0;i<len;i++){
+            item = items[i].split('=');
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if(name.length){
+                args[name] = value;
+            }
+        }
+        return args;
+    }
+//    console.log(window.location.href);
+//    console.log(window.location.search);
+//    console.log(window.location.hash);
+//    var qs = (location.search.length > 0 ? location.search.substring(1) : '');
+//    console.log(qs);
+//    var items = qs.length ? qs.split('&') : [];
+//    console.log(items);
+//    var args = getQueryStringArgs();
+//    console.log(args)
+    const inputsQ = document.querySelectorAll('input');
+    inputsQ[0].onclick = function(){
+        document.documentElement.style.background = 'red';
+    };
+    inputsQ[1].onclick = function(){
+        window.location.search = '?h=4&s=5'
+        let qs = location.search.length ? location.search.substring(1) : '';
+        console.log(qs);
+        let items = qs.split('&');
+        console.log(items);
+       for(var i=0;i<items.length;i++){
+           var ite = items[i].split('=');
+           console.log(ite[0]);
+       }
+    };
+    inputsQ[2].onclick = function(){
+        window.location.hash = '#eee';
+    };
+</script>
+</body>
+</html>

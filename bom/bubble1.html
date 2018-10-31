@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享</title>
+    <style>
+        #div1{
+            width:100px;
+            height:100px;
+            background:red;
+            position:absolute;
+            top:100px;
+            left:-100px;
+        }
+        #div2{
+            width:20px;
+            height:80px;
+            background:black;
+            position:absolute;
+            top:20px;
+            left:100px;
+            color:white;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">分享到</div>
+</div>
+<script>
+    const div = document.getElementById('div1');
+    div.onmouseover = function(){
+        div.style.left = 0;
+    }
+</script>
+</body>
+</html>

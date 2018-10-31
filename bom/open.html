@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>open</title>
+</head>
+<body>
+<input type="button" value="按钮">
+<script>
+    let inputsQ = document.querySelectorAll('input');
+    inputsQ[0].onclick = function(){
+//        let wroxWin = window.open('http://www.wrox.com/', 'wroxWindow','height=400,width=400,top=10,left=10,resizable=yes');
+//       wroxWin.resizeTo(500,500);
+//       wroxWin.moveTo(100,100);
+////       wroxWin.close();
+//       console.log(this.window,wroxWin);
+       alert(window.navigator.userAgent.toLowerCase());
+    }
+</script>
+</body>
+</html>

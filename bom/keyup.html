@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+<body>
+<input type="text" id="text"/>
+<ul id="ul"></ul>
+<script>
+    const text = document.getElementById('text');
+    const ul = document.getElementById('ul');
+    text.onkeyup = function(ev){
+        if(this.value != ''){
+            if(ev.keyCode == 13){
+                let li = document.createElement('li');
+                li.innerHTML = this.value;
+                if(ul.children[0]){
+                    ul.insertBefore(li,ul.children[0]);
+                }else {
+                    ul.appendChild(li);
+                }
+                this.value = '';
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口大小</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+        }
+        body{
+            width:100px;
+            height:1000px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+<script>
+//    console.log(window.innerWidth,window.innerHeight);
+//    console.log(document.documentElement.clientWidth,document.documentElement.clientHeight);
+//    console.log(document.body.scrollTop,document.body.scrollLeft);
+//    console.log(document.documentElement.scrollTop,document.documentElement.scrollLeft);
+//    console.log(document.body.scrollHeight);
+//    console.log(document.documentElement.offsetHeight,document.body.offsetHeight);
+//    console.log(window.pageYOffset,window.pageXOffset);
+//    document.documentElement.onclick = function(){
+//        console.log(window.pageYOffset);
+//    }
+//    window.onscroll = function(){
+//        console.log(window.pageYOffset);
+//    }
+//    window.onresize = function(){
+//        console.log(window.innerWidth,window.innerHeight);
+//    }
+    document.onclick = function(){
+//        window.scrollTo(0,0);
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #ul{
+            width:450px;
+            list-style:none;
+            border:1px solid blue;
+            overflow:hidden;
+            margin:0 auto;
+        }
+        li img{
+            width:200px;
+            height:200px;
+        }
+        li{
+            float:left;
+            margin:10px;
+            opacity:0;
+            transition:1s;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul">
+    <!--<li><img src="img/0.jpg" alt=""></li>-->
+    <!--<li><img src="img/0.jpg" alt=""></li>-->
+    <!--<li><img src="img/0.jpg" alt=""></li>-->
+    <!--<li><img src="img/0.jpg" alt=""></li>-->
+</ul>
+<script>
+  const ulQ = document.getElementById('ul');
+  let liQ = '';
+  //每次取10张图
+  for(var i=0;i<40;i++){
+      liQ += `<li _src="img/${i%10}.jpg"><img></li>`;
+  }
+  ulQ.innerHTML = liQ;
+
+    const lisQ = Array.from(document.getElementsByTagName('li'));
+    let ihQ = window.innerHeight;
+    window.onscroll = function(){
+        let scroll = document.documentElement.scrollTop;
+        let bottom = ihQ + scroll;
+        lisQ.forEach(e=>{
+            if(e.offsetTop <= bottom && e.getAttribute('_src')){
+                let data = e.getAttribute('_src');
+                e.children[0].src = data;
+                e.removeAttribute('_src');
+                setTimeout(function(){
+                    e.style.opacity = 1;
+                },100)
+            }
+        })
+    }
+</script>
+</body>
+</html>

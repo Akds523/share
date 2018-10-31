@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ev.target</title>
+    <style>
+        li{
+            background:red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="点击创建" id="btn" />
+<ul id="ul">
+    <li>
+        <span>1</span>
+    </li>
+</ul>
+<script>
+    const btn = document.getElementById('btn');
+    const ul = document.getElementById('ul');
+    const lis = document.getElementsByTagName('li');
+    let num = 1;
+//    btn.onclick = function(){
+//        num ++;
+//        ul.innerHTML = '<li>'+num+'</li>'
+//    }
+//    for(var i=0;i<lis.length;i++){
+//        lis[i].onclick = function(){
+//            alert(this.innerText);
+//        }
+//    }
+    ul.onclick = function(ev){
+        console.log(ev.target);
+        console.log(ev.target.innerText);
+        ev.target.innerText ++;
+    }
+</script>
+</body>
+</html>

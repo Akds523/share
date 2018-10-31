@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+    <style>
+        div{
+            padding:40px;
+        }
+        #div1{
+            background:red;
+        }
+        #div2{
+            background:green;
+        }
+        #div3{
+            background:yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+<script>
+    const div1 = document.getElementById('div1');
+    const div2 = document.getElementById('div2');
+    const div3 = document.getElementById('div3');
+    function fn1(){
+        alert(this.id);
+    }
+    div1.addEventListener('click',function(){
+        alert(1);
+    },false);
+    div2.addEventListener('click',function(){
+        alert(3);
+    },true);
+    div3.addEventListener('click',function(){
+        alert(2);
+    },false);
+</script>
+</body>
+</html>

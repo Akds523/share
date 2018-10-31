@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hash</title>
+</head>
+<body>
+<input type="button" value="点击上一张" />
+<img src="img/0.jpg" alt="" width="300" />
+<input type="button" value="点击下一张" />
+<input type="button" value="刷新" />
+<script>
+    const inputsQ = document.querySelectorAll('input');
+    const img = document.querySelector('img');
+    let num = 0;
+    num = window.location.hash.split('=')[1] || 0;
+    img.src = 'img/'+num+'.jpg';
+    window.location.hash = 'page='+num;
+    //点击上一张
+    inputsQ[0].onclick = function(){
+        num --;
+        if(num < 0){
+            num = 0;
+        }
+        window.location.hash = 'page=' + num;
+    };
+    //点击下一张
+    inputsQ[1].onclick = function(){
+       num ++;
+       if(num > 9){
+           num = 9
+       }
+       window.location.hash = 'page=' + num;
+    };
+    //刷新
+    inputsQ[2].onclick = function(){
+        window.location.hash = 'page=0';
+        window.location.reload();
+    };
+    window.onhashchange = function(){
+        let hash = window.location.hash.split('=')[1];
+        img.src = 'img/'+hash+'.jpg';
+        num = hash * 1;
+        console.log(num);
+    }
+</script>
+</body>
+</html>

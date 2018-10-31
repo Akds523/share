@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件流</title>
+    <style>
+        div{
+            padding: 100px;
+        }
+        div:nth-of-type(1){
+            background: red;
+        }
+        div:nth-of-type(1) > div{
+            background:green;
+        }
+        div:nth-of-type(1) > div > div{
+            background:yellow;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <div></div>
+    </div>
+</div>
+<script>
+    const div = document.getElementsByTagName('div');
+//    div[0].click = function(){
+//        alert('red');
+//    };
+//    div[1].onclick = function(){
+//        alert('green');
+//    };
+//    div[2].onclick = function(){
+//        alert('yellow');
+//    };
+    div[0].addEventListener('click',function(){
+        alert('red');
+    },true);
+    div[1].addEventListener ('click',function(){
+        alert('green');
+    },true);
+    div[2].addEventListener('click',function(){
+        alert('yellow');
+    },true);
+</script>
+</body>
+</html>

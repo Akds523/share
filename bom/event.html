@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点事件</title>
+</head>
+<body>
+<input type="text" value="请输入内容" id="text"/>
+<input type="button" value="全选" id="btn" />
+<script>
+    const text = document.getElementById('text');
+    const btn = document.getElementById('btn');
+    text.focus();
+    text.onfocus = function(){
+       if(text.value == '请输入内容'){
+           text.value = '';
+       }
+    };
+    text.onblur = function(){
+      console.log(this.value);
+    };
+    btn.onclick = function(){
+        text.select();
+    };
+</script>
+</body>
+</html>
