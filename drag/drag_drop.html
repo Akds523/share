@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width:100px;
+            height:100px;
+        }
+        #div{
+            background:red;
+            position:absolute;
+        }
+        #div2{
+            background:green;
+            position:absolute;
+            left:400px;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<div id="div2"></div>
+<script>
+    let div = document.getElementById('div');
+    let div2 = document.getElementById('div2');
+    drag(div);
+    drag(div2);
+    function drag(obj){
+        obj.onmousedown = function(ev){
+            var ev = ev || event;
+            var disX = ev.clientX - this.offsetLeft;
+            var disY = ev.clientY - this.offsetTop;
+            document.onmousemove = function(ev){
+                var ev = ev || event;
+                var lQ = ev.clientX - disX;
+                var tQ = ev.clientY  - disY;
+                if(lQ < 0){
+                    lQ = 0
+                }
+                if(lQ > window.innerWidth - obj.offsetWidth){
+                    lQ = window.innerWidth - obj.offsetWidth
+                }
+                if(tQ < 0){
+                    tQ = 0;
+                }
+                if(tQ > window.innerHeight - obj.offsetHeight){
+                    tQ = window.innerHeight - obj.offsetHeight;
+                }
+                obj.style.left = lQ + 'px';
+                obj.style.top = tQ + 'px';
+            };
+            document.onmouseup = function(ev){
+                document.onmousemove = document.onmouseup = null;
+            };
+            return false;
+        };
+    }
+</script>
+</body>
+</html>

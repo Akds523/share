@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽改变div大小</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #div{
+            width:100px;
+            height:100px;
+            background:red;
+            position:absolute;
+            left:400px;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script>
+    const div = document.getElementById('div');
+    dragChange(div);
+    function dragChange(obj){
+        obj.onmousedown = function(ev){
+            let b = '';
+            let disW = this.offsetWidth;
+            let disX = ev.clientX;
+            let disL = this.offsetLeft;
+            if(disX > disL + disW - 10){
+                this.style.cursor = 'e-resize';
+                b = 'right';
+            }
+            if(disX < disL + 10){
+                this.style.cursor = 'w-resize';
+                b = 'left';
+            }
+            document.onmousemove = function(ev){
+                switch(b){
+                    case 'right':
+                        obj.style.width = disW + (ev.clientX - disX) + 'px';
+                        break;
+                    case 'left':
+                        obj.style.width = disW - (ev.clientX - disX) + 'px';
+                        obj.style.left = disL + (ev.clientX - disX) + 'px';
+                        break;
+                }
+            };
+            document.onmouseup = function(ev){
+                document.onmousemove = document.onmouseup = null;
+            };
+        };
+    }
+</script>
+</body>
+</html>
