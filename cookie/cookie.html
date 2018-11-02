@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+</head>
+<body>
+<script>
+    let date = new Date();
+    date.setDate(date.getDate() + 4);
+    console.log(date.toGMTString());
+//    document.cookie = 'name = leo;expires =' + date.toGMTString();
+    console.log(document.cookie);
+
+    function setCookie(key,value,t){
+        let date = new Date();
+        date.setDate(date.getDate() + t);
+        document.cookie = key + '=' +value+';expires = '+ date.toGMTString();
+    }
+    function getCookie(key){
+        let arr1 = document.cookie.split('; ');
+        for(var i=0;i<arr1.length;i++){
+            var arr2 = arr1[i].split('=');
+            if(arr2[0] = key){
+                return decodeURI(arr2[1]);
+            }
+        }
+    }
+    function removeCookie(key){
+        setCookie(key,'',-1);
+    }
+    setCookie('age',18,3);
+    removeCookie('name');
+//    console.log(getCookie('name'));
+    console.log(document.cookie);
+</script>
+</body>
+</html>
