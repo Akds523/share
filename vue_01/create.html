@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app7">
+    <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+<div id="app">
+    <app-nav></app-nav>
+    <app-view>
+        <app-sidebar></app-sidebar>
+        <app-content></app-content>
+    </app-view>
+</div>
+<script>
+    Vue.component('todo-item',{
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+    });
+    var app7 = new Vue({
+        el:'#app7',
+        data:{
+            groceryList:[
+                {id:0,text:'蔬菜'},
+                {id:1,text:'水果'},
+                {id:2,text:'随便'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if v-else v-if-else</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--<h1 v-if="ok">yes</h1>-->
+<!--<template v-if="ok">-->
+    <!--<h1>title</h1>-->
+    <!--<p>p1</p>-->
+    <!--<p>p2</p>-->
+<!--</template>-->
+<ul id="example-1">
+    <li v-for="item in items">
+        {{item.message}}
+    </li>
+</ul>
+<ul id="example-2">
+    <li v-for="(item,index) in items">
+        {{parentMessage}}-{{index}}-{{item.message}}
+    </li>
+</ul>
+<ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+        {{value}}
+    </li>
+    <li v-for="(value,key) in object">
+        {{key}}:{{value}}
+    </li>
+    <li v-for="(value,key,index) in object">
+        {{index}}.{{key}}:{{value}}
+    </li>
+</ul>
+<div id="demo">
+    {{items}}
+</div>
+<div id="demo2">
+    {{userName}}
+</div>
+<div>
+    <span v-for="n in 10">{{n}}</span>
+</div>
+<li v-for="n in even(numbers)" id="demo3">{{n}}</li>
+<script>
+    var vm = new Vue({
+        el:'#example-1',
+        data:{
+            items:[
+                {message:'foo'},
+                {message:'bar'}
+            ]
+        }
+    });
+    var vms = new Vue({
+        el:'#example-2',
+        data:{
+            parentMessage:'Parent',
+            items:[
+                {message:'foo'},
+                {message:'bar'}
+            ]
+        }
+    });
+    new Vue({
+        el:'#v-for-object',
+        data:{
+            object:{
+                firstName:'join',
+                lastName:'doe',
+                age:30
+            }
+        }
+    });
+    var vm4 = new Vue({
+        el:'#demo',
+        data:{
+            items:['a','b','c']
+        }
+    })
+    var vm5 = new Vue({
+        el:'#demo2',
+        data:{
+            userName:{
+                name:'leo'
+            }
+        }
+    });
+    vm5.userName = Object.assign({},vm5.userName,{
+        age:27,
+        favoribeColor:'vue green'
+    });
+    var demo3 = new Vue({
+        el:'#demo3',
+        data:{
+            numbers:[1,2,3,4,5]
+        },
+//        computed:{
+//            evenNumbers:function(){
+//                return this.numbers.filter(function(number){
+//                    return number % 2 === 0
+//                })
+//            }
+//        }
+        methods:{
+            even:function(numbers){
+                return numbers.filter(function(number){
+                    return number% 2 === 0
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
