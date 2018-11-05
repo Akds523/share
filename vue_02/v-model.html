@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <input type="text" v-on:input="change">
+    <input type="text" v-model="message">
+    <p>{{message}}</p>
+</div>
+<script>
+    var message = 'hello vue';
+    new Vue({
+        el:'#demo',
+        data:{
+            message
+        },
+        methods:{
+            change:function(ev){
+                this.message = ev.target.value;
+            }
+        }
+    })
+</script>
+</body>
+</html>

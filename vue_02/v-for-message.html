@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易留言板</title>
+    <style>
+        ul{
+            list-style:none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="message">
+    <input type="text" placeholder="请留言" v-model="val"/>
+    <input type="button" value="send" v-on:click="send"/>
+    <ul>
+        <li v-for="item in list">{{item.title}}</li>
+    </ul>
+</div>
+<script>
+    let num = 0;
+    let list = [{
+        id:num,
+        title:'第一条留言'
+    }];
+    let vm = new Vue({
+        el:'#message',
+        data:{
+            list,
+            val:''
+        },
+        methods:{
+            send:function(){
+                this.list.unshift({
+                    id:num ++,
+                    title:this.val
+                });
+                this.val = '';
+            }
+        }
+    })
+</script>
+</body>
+</html>
