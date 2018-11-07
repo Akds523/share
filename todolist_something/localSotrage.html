@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let STORAGE_KEY = 'todo-vuejs-2.0';
+    let todoStorage = {
+        fetch:function(){
+            let todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            todos.forEach(function(todo,index){
+                todo.id = index;
+            });
+            todoStorage.uid = todos.length;
+            return todos;
+        },
+        save:function(todos){
+            return localStorage.setItem(STORAGE_KEY,JSON.stringify(todos));
+        }
+    };
+   localStorage.removeItem('todo-vuejs');
+    console.log(localStorage);
+    console.log(todoStorage.fetch())
+</script>
+</body>
+</html>

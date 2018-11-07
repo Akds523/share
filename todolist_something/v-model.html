@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" placeholder="请输入内容" v-model="newTodo" @keyup.enter="add"/>
+    <p v-for="item in todos">{{item}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            todos:[],
+            newTodo:''
+        },
+        methods:{
+            add:function(){
+                this.todos.push(this.newTodo);
+                this.newTodo='';
+            }
+        }
+    })
+</script>
+</body>
+</html>
