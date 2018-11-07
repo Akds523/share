@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage+函数自执行</title>
+</head>
+<body>
+<a href="">1</a><a href="">2</a><a href="">3</a><a href="">4</a>
+<script>
+//    localStorage.setItem('checked','true');
+//    localStorage.setItem('name','qin');
+//    let name = localStorage.getItem('name');
+//    console.log(name);
+//    console.log(localStorage);
+//    function data(){
+//        var i = 1;
+//        return function(){
+//           console.log(i ++);
+//        }
+//    }
+//    let b1 = data();
+//    let b2 = data();
+//    b1();
+//    b2();
+//    var foo = function(){
+//        alert(1);
+//    };
+////    function fo(){
+////        alert(1);
+////    }(2);
+//( function(){
+//   console.log(1);
+//}());
+//(function(){
+//    console.log(2);
+//})();
+//var i = function(){
+//    return 10;
+//}();
+var elems = document.getElementsByTagName('a');
+
+for (var i = 0; i < elems.length; i++) {
+
+//    elems[i].addEventListener('click', function (e) {
+//        e.preventDefault();
+//        alert('I am link #' + i);
+////    }, 'false');
+//    (function (lockedInIndex) {
+//
+//        elems[i].addEventListener('click', function (e) {
+//            e.preventDefault();
+//            alert('I am link #' + lockedInIndex);
+//        }, 'false');
+//
+//    })(i);
+    elems[i].addEventListener('click', (function (lockedInIndex) {
+        return function (e) {
+            e.preventDefault();
+            alert('I am link #' + lockedInIndex);
+        };
+    })(i), 'false');
+}
+var router = new Router();
+console.log(router);
+</script>
+</body>
+</html>
