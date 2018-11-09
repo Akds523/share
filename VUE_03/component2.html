@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="blog-post-demo">
+    <!--<blog-post title="vue.js" content="con"></blog-post>-->
+    <!--<blog-post title="vue cli router"></blog-post>-->
+    <!--<blog-post-->
+            <!--v-for="post in posts"-->
+            <!--v-bind:key="post.id"-->
+            <!--v-bind:title="post.title"-->
+    <!--&gt;</blog-post>-->
+    <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:post="post"
+    ></blog-post>
+</div>
+<script>
+//    Vue.component('blog-post',{
+//        props:['title'],
+//        template:`<h3>{{title}}</h3>
+//                   <div v-html="content"></div>
+//                   `
+//    });
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+      <div v-html="post.data"></div>
+    </div>
+  `
+    })
+new Vue({
+    el:'#blog-post-demo',
+    data:{
+        posts:[
+            {id:1,title:'vue.js'},
+            {id:2,title:'vue cli',content:'comp',data:'12.3.4'}
+        ]
+    }
+})
+</script>
+</body>
+</html>

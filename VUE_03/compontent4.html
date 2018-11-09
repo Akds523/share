@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件上的v-model</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <custom-input v-model="searchText">dvxvxcvc</custom-input>
+    <p>{{searchText}}</p>
+</div>
+<div id="demo1">
+    <alert-box>something bad</alert-box>
+</div>
+<script>
+    Vue.component('custom-input',{
+        props:['value'],
+        template:`<input :value="value"
+                         @input="$emit('input',$event.target.value)"
+                    />`
+    });
+    new Vue({
+        el:'#demo',
+        data:{
+            searchText:''
+        }
+    });
+    Vue.component('alert-box',{
+       template:`<div class="demo-alert-box">
+                    <strong>Error!</strong>
+                    <slot></slot>
+                </div>`
+    })
+    new Vue({
+        el:'#demo1'
+    })
+</script>
+</body>
+</html>

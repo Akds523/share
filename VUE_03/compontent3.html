@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向父级组件传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <div :style="{fontSize:postFontSize + 'em'}">
+        <blog-post v-for="post in posts"
+                   :key="post.id"
+                   :post="post"
+                   @enlarge-text="onEnlargeText"
+
+        ></blog-post>
+    </div>
+    <!--@enlarge-text="postFontSize += $event"-->
+    <div>demo</div>
+</div>
+<script>
+    Vue.component('blog-post',{
+        props:['post'],
+        template:`<div class="blog-post">
+                        <h3>{{post.title}}</h3>
+                        <button @click="$emit('enlarge-text',0.1)">
+                            Enlarge text
+                        </button>
+                        <div v-html="post.content"></div>
+                   </div>`
+    });
+    new Vue({
+        el:'#demo',
+        data:{
+            posts:[
+                {id:1,title:'My vue'},
+                {id:2,title:'vuejs',content:'只是内容'}
+            ],
+           postFontSize:1
+        },
+        methods:{
+            onEnlargeText:function(enlargeAmount){
+                this.postFontSize += enlargeAmount
+            }
+        }
+    })
+</script>
+</body>
+</html>
