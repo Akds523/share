@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-demo-todoList</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <input type="text" placeholder="enter your message" v-model="newTodo" @keyup.enter="addTodo"/>
+    <input type="button" value="提交" @click="addTodo"/>
+    <ul>
+        <todo-item v-for="item in todoData" :key="item.id" v-bind:content="item"></todo-item>
+    </ul>
+</div>
+<script>
+//    全局注册组件
+//    Vue.component('todo-item',{
+//        props:['content'],
+//        template:`<li>{{content}}</li>`
+//    });
+//局部组件
+    let todoItem = {
+        props:['content'],
+        template:`<li>{{content}}</li>`
+    };
+    let vm = new Vue({
+        el:'#demo',
+        components:{
+            todoItem
+        },
+        data:{
+            todoData:[],
+            newTodo:''
+        },
+        methods:{
+            addTodo:function(){
+                let value = this.newTodo && this.newTodo.trim();
+                if(!value){
+                    return
+                }
+                this.todoData.push(this.newTodo);
+                this.newTodo = '';
+            }
+        }
+    })
+</script>
+</body>
+</html>
