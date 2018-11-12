@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父组件与子组件之间传值</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <item-list :count="0" @change="addTotal"></item-list>
+    <item-list :count="0" @change="addTotal"></item-list>
+    <div>{{total}}</div>
+</div>
+<script>
+    Vue.component('item-list',{
+        props:['count'],
+        data:function(){
+            return {
+                number:this.count
+            }
+        },
+        template:`<div @click="add">{{number}}</div>`,
+        methods:{
+            add:function(){
+                this.number = this.number + 2;
+                this.$emit('change',2)
+            }
+        }
+    });
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            total:0
+        },
+        methods:{
+            addTotal:function(step){
+                console.log(step);
+                this.total += step;
+            }
+        }
+    })
+</script>
+</body>
+</html>

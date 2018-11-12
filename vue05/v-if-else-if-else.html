@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <!--<div v-if="show==='a'">this is a</div>-->
+    <!--<div v-else-if="show==='b'">this is b</div>-->
+    <!--<div v-else>others</div>-->
+    <!--<div v-show="showO">display</div>-->
+    <div v-if="type==='username'">
+        <input type="text" placeholder="enter your username" key="username-input"/>
+    </div>
+    <div v-else-if="type==='email'">
+        <input type="text" placeholder="enter your email" key="email-input"/>
+    </div>
+</div>
+<script>
+let vm = new Vue({
+    el:'#demo',
+    data:{
+        type:'username',
+    }
+})
+</script>
+</body>
+</html>

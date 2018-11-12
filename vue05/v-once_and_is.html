@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件与v-once指令</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <component :is="type"></component>
+    <!--<child v-if="type === 'child'"></child>-->
+    <!--<child2 v-if="type === 'child2'"></child2>-->
+    <button @click="changeChild">change</button>
+</div>
+<script>
+    Vue.component('child',{
+        template:`<div v-once>111</div>`
+    });
+    Vue.component('child2',{
+        template:`<div v-once>222</div>`
+    });
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            type:'child'
+        },
+        methods:{
+            changeChild:function(){
+                this.type = this.type === 'child' ? 'child2' : 'child'
+            }
+        }
+    })
+</script>
+</body>
+</html>

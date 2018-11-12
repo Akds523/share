@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件细节is-data(function)-ref</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <table>
+        <tbody>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        </tbody>
+    </table>
+    <div ref="hello" @click="changeRef">hello world</div>
+</div>
+<script>
+Vue.component('row',{
+    data:function(){
+        return {
+            message:2244
+        }
+    },
+    template:'<tr><td >{{message}}</td></tr>',
+});
+    let vm = new Vue({
+        el:'#demo',
+        methods:{
+            changeRef:function(){
+                console.log(this.$refs.hello);
+            }
+        }
+    })
+</script>
+</body>
+</html>

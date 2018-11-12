@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get_set</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    {{fullName}}
+</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            firstName:'del',
+            lastName:'lee',
+        },
+        computed:{
+            fullName:{
+                get:function(){
+                    return this.firstName + ' '+ this.lastName;
+                },
+                set:function(newValue){
+                  let arr = newValue.split(' ');
+                  console.log(arr);
+                  this.firstName = arr[0];
+                  this.lastName = arr[1];
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

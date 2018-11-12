@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot插槽</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <todo-list content="">
+        <div slot="header">header</div>
+        <div slot="footer">footer</div>
+    </todo-list>
+</div>
+<script>
+    Vue.component('todo-list',{
+        props:['content'],
+        template:`<div>
+                    <slot name="header"></slot>
+                    <div>main</div>
+                    <slot name="footer"></slot>
+                 </div>`
+    });
+    let vm = new Vue({
+        el:'#demo'
+    })
+</script>
+</body>
+</html>

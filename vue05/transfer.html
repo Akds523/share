@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子组件传递数据（bus）</title>
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <child count="qin"></child>
+    <child count="liu"></child>
+</div>
+<script>
+    Vue.prototype.bus = new Vue();
+    Vue.component('child',{
+        props:{
+            count:String
+        },
+        data:function(){
+            return {
+                selfCount:this.count
+            }
+        },
+       template:`<div @click="val">{{selfCount}}</div>`,
+        methods:{
+            val:function(){
+                this.bus.$emit('change',this.selfCount);
+//                console.log(this.selfCount);
+            },
+        },
+        mounted:function(){
+            var this_ = this;
+            this.bus.$on('change',function(msg){
+//                console.log(msg);
+                 this_.selfCount = msg;
+            })
+        }
+    });
+    let vm = new Vue({
+        el:'#demo'
+    })
+</script>
+</body>
+</html>

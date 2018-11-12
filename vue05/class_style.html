@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class_style</title>
+    <!--<style>-->
+        <!--.active{-->
+            <!--color:red;-->
+        <!--}-->
+    <!--</style>-->
+    <script src="src/vue.js"></script>
+</head>
+<body>
+<!--:class="{active:isActive}"-->
+<!-- :class="[isActive]"-->
+<!--:style="{color:activeClass}"-->
+<!--:style="styleObj"-->
+<div id="demo"
+    :style="[styleA]"
+     @click="changeCla"
+>hello world</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+//            styleObj:{
+//                color:'black'
+//            }
+            styleA:{
+                color:'black'
+            }
+        },
+        methods:{
+            changeCla:function(){
+//               if(this.isActive === ''){
+//                  this.isActive = 'active';
+//               }else{
+//                   this.isActive = '';
+//               }
+//                this.isActive = this.isActive === '' ? 'active' : ''
+//             if(this.styleA.color === 'black'){
+//                 this.styleA.color = 'red';
+//             }else{
+//                 this.styleA.color = 'black';
+//             }
+                this.styleA.color = this.styleA.color === 'black' ? 'red' : 'black';
+            }
+        }
+    })
+</script>
+</body>
+</html>
