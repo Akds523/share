@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画封装</title>
+    <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <fade :show="show">
+        <div >111</div>
+    </fade>
+    <button @click="change">change</button>
+</div>
+<script>
+    Vue.component('fade',{
+        props:['show'],
+        template:`<transition @before-enter="beforeEnter" @enter="enter">
+                      <slot v-if="show"></slot>
+                  </transition>`,
+        methods:{
+            beforeEnter:function(el){
+                el.style.color = 'red';
+            },
+            enter:function(el,done){
+               setTimeout(()=>{
+                   el.style.color = 'green';
+                   done()
+               },2000)
+            }
+        }
+    });
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            show:true
+        },
+        methods:{
+            change:function(){
+                this.show = !this.show;
+            }
+        }
+    })
+</script>
+</body>
+</html>

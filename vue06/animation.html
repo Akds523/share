@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css动画-animation-animate.css库</title>
+    <script src="../src/vue.js"></script>
+    <link rel="stylesheet" href="../src/animate.css">
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity:0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition:opacity 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <button @click="show = !show">toggle</button>
+    <transition name="fade"
+                :duration="{enter:3000,leave:4000}"
+                appear
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated  shack fade-leave-active"
+                appear-active-class="animated swing"
+    >
+        <p v-if="show">lorem ipsum dolor sit amet .......
+            .lorem ipsum dolor sit ametlorem ipsum dolor sit amet.
+        </p>
+    </transition>
+</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            show:true
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中的css过渡动画</title>
+    <style>
+        /*.fade-enter,.fade-leave-to{*/
+            /*opacity:0;*/
+        /*}*/
+        /*.fade-enter-active, .fade-leave-active{*/
+            /*transition:opacity 3s;*/
+        /*}*/
+        .fade-enter-active{
+            transition:all 3s ease;
+        }
+        .fade-leave-active{
+            transition:all .8s cubic-bezier(1.0,0.5,0.8,1.0)
+        }
+        .fade-enter,.fade-leave-to{
+            transform:translateX(10px);
+            opacity:0;
+        }
+    </style>
+    <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <button @click="toggle">Toggle</button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            show:true
+        },
+        methods:{
+            toggle:function(){
+                this.show = !this.show;
+            }
+        }
+    })
+</script>
+</body>
+</html>

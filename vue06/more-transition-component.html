@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多个组件或元素的过度动画</title>
+    <script src="../src/vue.js"></script>
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity:0;
+        }
+        .fade-enter-acitve,.fade-leave-active{
+            transition:opacity 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <!--<transition>-->
+        <!--<button v-if="isEditing" key="save">save</button>-->
+        <!--<button v-else key="edit">edit</button>-->
+    <!--</transition>-->
+    <!--<transition>-->
+        <!--<button :key="isEditing">-->
+            <!--{{isEditing ? 'save' : 'edit'}}-->
+        <!--</button>-->
+    <!--</transition>-->
+    <!--<transition>-->
+        <!--<button v-if="doState === 'saved'" key="saved">save</button>-->
+        <!--<button v-if="doState === 'edited'" key="edited">edit</button>-->
+        <!--<button v-if="doState === 'editing'" key="editing">cancel</button>-->
+    <!--</transition>-->
+    <transition mode="in-out" name="fade">
+        <!--<button :key="doState">-->
+            <!--{{buttonMessage}}-->
+        <!--</button>-->
+        <!--<div v-if="show" key="111">111</div>-->
+        <!--<div v-else key="222">222</div>-->
+        <!--<div :key="show"></div>-->
+        <!--<child v-if="show"></child>-->
+        <!--<child-one v-else></child-one>-->
+        <component :is="show"></component>
+    </transition>
+    <button @click="showC">change</button>
+
+</div>
+<script>
+    Vue.component('child',{
+        template:`<div>111</div>`
+    });
+    Vue.component('child-one',{
+        template:`<div>222</div>`
+    });
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            show:'child'
+        },
+//        computed:{
+//            buttonMessage:function(){
+//                switch(this.doState){
+//                    case 'saved': return 'save';
+//                    case 'edited' : return 'edit';
+//                    case 'editing': return 'cancel'
+//                }
+//            }
+//        }
+        methods:{
+            showC:function(){
+                this.show = this.show === 'child' ? 'child-one' : 'child';
+            }
+        }
+    })
+</script>
+</body>
+</html>

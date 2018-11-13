@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js动画以及velocity.js库</title>
+    <script src="../src/vue.js"></script>
+    <script src="../src/velocity.min.js"></script>
+</head>
+<body>
+<div id="demo">
+    <button @click="togBtn">toggle</button>
+    <transition  @before-enter="beforeEnter"
+                 @enter="enter"
+                 @leave="leave"
+    >
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        data:{
+            show:true
+        },
+        methods:{
+            togBtn:function(){
+                this.show = !this.show;
+            },
+            beforeEnter:function(el){
+                el.style.opacity = 0;
+                el.style.transformOrigin = 'left';
+            },
+            enter:function(el,done){
+                Velocity(el,{opacity:1,fontSize:'1.4em'},{duration:300});
+                Velocity(el,{fontSize:'1em'},{complete:done});
+            },
+            leave:function(el,done){
+                Velocity(el,{translateX:'15px',rotateZ:'50deg'},{duration:600});
+                Velocity(el,{rotateZ:'100deg'},{loop:2});
+                Velocity(el,{rotateZ:'45deg',translateY:'30px',translateX:'30px',opacity:0},{complete:done});
+            }
+        }
+    })
+</script>
+</body>
+</html>
