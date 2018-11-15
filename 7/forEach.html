@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+</head>
+<body>
+<script>
+    let arr = [{
+        id:1,
+        title:'111',
+        text:'11111'
+    }, {
+            id:2,
+            title:'222',
+            text:'22222'
+        }, {
+            id:3,
+            title:'333',
+            text:'33333'
+        },
+        {
+            id:4,
+            title:'444',
+            text:'44444'
+        },
+        {
+            id:5,
+            title:'555',
+            text:'55555'
+        },
+        {
+            id:6,
+            title:'666',
+            text:'666666'
+        },
+        {
+            id:7,
+            title:'777',
+            text:'77777'
+        },
+        {
+            id:8,
+            title:'888',
+            text:'88888'
+        },
+        {
+            id:9,
+            title:'999',
+            text:'99999'
+        }
+        ];
+    const pages = [];
+    arr.forEach((item,index)=>{
+//        console.log(item,index);
+        const page = Math.floor(index / 8);
+        if(!pages[page]){
+            pages[page] = [];
+        }
+        pages[page].push(item);
+    });
+    console.log(pages);
+</script>
+</body>
+</html>

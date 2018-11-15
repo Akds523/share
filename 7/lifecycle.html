@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期</title>
+    <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <button @click="beforeCreate">change</button>
+    <button @click="created">created</button>
+    <button @click="beforeMount">beforeMount</button>
+    <button @click="beforeDestroy"></button>
+</div>
+<script>
+    let vm = new Vue({
+        el:'#demo',
+        methods:{
+            beforeCreate:function(){
+                console.log('beforeCreate')
+            },
+            created:function(){
+                console.log('created')
+            },
+            beforeMount:function(){
+                console.log('beforeMount');
+            },
+            beforeDestroy:function(){
+                console.log('beforeDestroy');
+            }
+        }
+    })
+</script>
+</body>
+</html>
