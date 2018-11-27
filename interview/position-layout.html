@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position-layout</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        article div{
+            position:absolute;
+            min-height:500px;
+        }
+        .left,.right{
+            width:300px;
+        }
+        .left{
+            background-color:deepskyblue;
+            left:0;
+        }
+        .right{
+            background-color:lightpink;
+            right:0;
+        }
+        .center{
+            background-color:darkgray;
+            left:300px;
+            right:300px;
+        }
+        .clear:after{
+            content:'';
+            clear:both;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <article>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            <h1>定位布局</h1>
+        </div>
+    </article>
+</section>
+</body>
+</html>

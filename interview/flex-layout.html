@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-layout</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        article{
+            display:flex;
+        }
+        article div{
+            min-height:500px;
+        }
+        .left,.right{
+            width:300px;
+        }
+        .left{
+            background-color:deepskyblue;
+        }
+        .right{
+            background-color:lightpink;
+        }
+        .center{
+            background-color:darkgray;
+            /*重点*/
+            flex:1;
+        }
+        .clear:after{
+            content:'';
+            clear:both;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <article>
+        <div class="left"></div>
+        <div class="center">
+            <h1>定位布局</h1>
+        </div>
+        <div class="right"></div>
+    </article>
+</section>
+</body>
+</html>

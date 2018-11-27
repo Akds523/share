@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float-layout</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        article div{
+            min-height:500px;
+        }
+        .left,.right{
+            width:300px;
+        }
+        .left{
+            background-color:deepskyblue;
+            float:left;
+        }
+        .right{
+            background-color:lightpink;
+            float:right;
+        }
+        .center{
+            background-color:darkgray;
+        }
+        .clear:after{
+            content:'';
+            clear:both;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<section class="layout float">
+    <article>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            <h1>float-layout</h1>
+        </div>
+    </article>
+</section>
+</body>
+</html>
