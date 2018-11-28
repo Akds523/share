@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册-登录</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        div#login{
+            width:300px;
+            height:480px;
+            border:1px solid red;
+        }
+        div#login input.textInp{
+            width:200px;
+            height:30px;
+            margin-top:20px;
+            margin-left:40px;
+            outline:none;
+            text-indent:1em;
+        }
+        div#login input.btnLog{
+            width: 100px;
+            height:40px;
+            background:blue;
+            margin-top:15px;
+            margin-left:30px;
+            outline:none;
+            border:0;
+            cursor:no-drop;
+            color:#ffffff;
+        }
+        #logg{
+            float:left;
+        }
+        .ok{
+            border-color:green;
+            width:200px;
+            height:30px;
+            margin-top:20px;
+            margin-left:40px;
+            outline:none;
+            text-indent:1em;
+        }
+        .error{
+            border-color:red;
+            width:200px;
+            height:30px;
+            margin-top:20px;
+            margin-left:40px;
+            outline:none;
+            text-indent:1em;
+        }
+        .tiao{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div id="login">
+    <input type="text" placeholder="请输入手机号" class="textInp" name="phone"/>
+    <input type="text" placeholder="请输入邮箱" class="textInp" name="email"/>
+    <input type="text" placeholder="请输入qq号" class="textInp" name="qq"/>
+    <input type="text" placeholder="请输入生日" class="textInp" name="birthday"/>
+    <input type="text" placeholder="请输入用户名" class="textInp" name="username" />
+    <input type="password" placeholder="请输入密码" class="textInp" name="pas"/>
+    <input type="password" placeholder="请再次输入密码" class="textInp" name="pasAgain"/>
+    <input type="button" value="注册" id="btnLog" class="btnLog"/>
+    <input type="button" value="登录" id="btnLogin" class="btnLog"/>
+</div>
+<script>
+    const inp = Array.from(document.querySelectorAll('input[name]'));
+    const btnLog = document.getElementById('btnLog');
+    const btnLogin = document.getElementById('btnLogin');
+    const logg = document.getElementById('logg');
+    let re = {
+        phone:/^1[35678]\d{9}$/,
+        email:/^[1-9a-zA-z][\w\.\_\-]{5,17}@[0-9a-zA-Z]{2,7}(\.[a-z]{2,3}){1,2}$/,
+        qq:/^[1-9]\d{5,11}$/,
+        birthday:/^(\d+)\D+(\d+)\D+(\d+)\D*$/,
+        username:/^[a-zA-Z]\w{4,16}$/,
+        pas:/^[a-zA-Z]\w{5,17}$/,
+        pasAgain:/^[a-zA-Z]\w{5,17}$/
+    };
+    inp.forEach((e,i)=>{
+        e.addEventListener('input',function(){
+//            判断 re中的和写入input里面的是否被正则匹配
+            if(re[e.name].test(e.value)){
+                if(Re(e,re)){
+                    e.className = 'ok';
+                    if(inp.every(el=>el.className === 'ok')){
+                        btnLog.style.cursor = 'pointer';
+                        btnLogin.style.cursor = 'pointer';
+                        btnLog.addEventListener('click',function(){
+                            alert('注册成功')
+                        });
+                        btnLogin.addEventListener('click',function(){
+
+                        })
+                    }
+                }else{
+                    e.className = 'error';
+                    btnLog.style.cursor = 'no-drop';
+                    btnLogin.style.cursor = 'no-drop';
+                }
+            }else{
+                e.className = 'error';
+                btnLog.style.cursor = 'no-drop';
+                btnLogin.style.cursor = 'no-drop';
+            }
+        })
+    });
+
+    function Re(ele,re){
+        switch(ele.name){
+            case 'birthday':
+                let arr = ele.value.match(re[ele.name]);
+                let d = new Date(arr[1],arr[2]-1,arr[3]);
+                let newD = +new Date;
+                let y = d.getFullYear();
+                let m = d.getMonth() + 1;
+                let dd = d.getDate();
+                if(d.getTime() >= newD || y!=arr[1] || m!=arr[2] || dd!=arr[3]){
+                    return false;
+                }else{
+                    return true;
+                }
+            break;
+            default:
+                return true;
+            break;
+        }
+    }
+</script>
+</body>
+</html>

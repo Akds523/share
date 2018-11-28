@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        div#log{
+            width:300px;
+            height:300px;
+            border:1px solid red;
+        }
+        div#log input.inp{
+            width:200px;
+            height:30px;
+            margin:30px 0 0 40px;
+        }
+        div#log input.btn{
+            width:100px;
+            height:30px;
+            margin:20px 0 0 30px;
+            cursor:no-drop;
+        }
+        div#log p.text{
+            text-indent: 2em;
+            margin-top:10px;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div id="log">
+    <input type="text" placeholder="请输入手机号" class="user inp"/>
+    <p class="text">用户名输入不正确</p>
+    <input type="password" placeholder="请输入密码" class="pas inp"/>
+    <p class="text">用户名密码不正确,请核对后在登录</p>
+    <input type="button" value="登录" class="btn"/>
+    <input type="button" value="退出" class="btn"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象-原型与原型链</title>
+</head>
+<body>
+<script>
+//    function teacher(name,age,t){
+//        var name = name;
+//        var age = age;
+//        var t = t;
+//        return {
+//            name,
+//            age,
+//            t,
+//            sayName:function(){
+//                console.log(this.name);
+//            }
+//        }
+//    }
+//    let t1 = teacher('qin',24,'web');
+//    t1.sayName()
+    function Person(name,age){
+        var obj = {};
+        obj.name = name;
+        obj.age = age;
+        obj.say = function(){
+            console.log(this.name);
+        };
+        return obj
+    }
+    let p = new Person('qin',24);
+    p.say();
+    function Person1(name,age){
+        console.log(this);
+        this.name = name;
+        this.age = age;
+        this.say = function(){
+            console.log(this.name);
+        }
+    }
+    let p1 = new Person1('liu',7);
+    p1.say()
+//let {log,dir} = console;
+//    let fn = function(){
+//        alert('1');
+//        log(this);
+//        return function fn3(){}
+//    }
+//    fn()
+//
+//    let f = new fn;
+//    log(f);
+</script>
+</body>
+</html>
