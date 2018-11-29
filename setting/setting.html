@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-点击设置长、宽、高、颜色</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #main{
+            width:735px;
+            height:420px;
+            background-color:#efefef;
+            position:relative;
+        }
+        div.header{
+            margin:20px 0 0 25px;
+        }
+        div.header span{
+            display:inline-block;
+            line-height:12px;
+            font-size:28px;
+            font-weight:bold;
+        }
+        div.header input{
+            width:100px;
+            height:40px;
+            background-color:#ff0000;
+            outline:none;
+            border:0;
+            color:#ffffff;
+            font-size:16px;
+            cursor:pointer;
+            margin-left:9px;
+        }
+        #main div#main1{
+            width:100px;
+            height:100px;
+            border:4px solid #393129;
+            margin:20px 0 0 25px;
+            background-color:#ffffff;
+        }
+        #main div.setting{
+            width:300px;
+            height:200px;
+            border:20px solid #9c949c;
+            background-color:#ffffff;
+            position:absolute;
+            top:150px;
+            left:370px;
+            display:none;
+        }
+        div.setting span.set{
+            display:inline-block;
+            width:36px;
+            height:32px;
+            margin-left:5px;
+            text-align:center;
+            line-height:32px;
+            cursor:pointer;
+        }
+        div.setting span.wiset,span.heiset{
+            background-color:#efefef;
+            color:#847b84;
+            border:1px solid #847b84;
+        }
+        div.setting span.red{
+            background-color:red;
+        }
+        div.setting span.yellow{
+            background-color:yellow;
+        }
+        div.setting span.blue{
+            background-color:blue;
+        }
+        div.setting div#bg,div#wi,div#he{
+            margin:10px 0 0 32px;
+        }
+        div.setting div.btn{
+            margin:22px 0 0 88px;
+        }
+        div.setting div.btn input{
+            width:60px;
+            height:30px;
+            outline:none;
+            cursor:pointer;
+            border:0;
+            background-color:#002952;
+            color:#ffffff;
+        }
+    </style>
+</head>
+<body>
+<main id="main">
+    <div class="header">
+        <span>请为下面的DIV设置样式:</span>
+        <input type="button" value="点击设置" class="btnSetting"/>
+    </div>
+    <div id="main1"></div>
+    <div class="setting" id="setting">
+        <div id="bg">
+            <span>请选择背景色：</span>
+            <span class="red set">红</span>
+            <span class="yellow set">黄</span>
+            <span class="blue set">蓝</span>
+        </div>
+        <div id="wi">
+            <span>请选择宽(px)：</span>
+            <span class="set wiset">200</span>
+            <span class="set wiset">300</span>
+            <span class="set wiset">400</span>
+        </div>
+        <div id="he">
+            <span>请选择高(px)：</span>
+            <span class="set heiset">200</span>
+            <span class="set heiset">300</span>
+            <span class="set heiset">400</span>
+        </div>
+        <div class="btn">
+            <input type="button" value="恢复" />
+            <input type="button" value="确认" />
+        </div>
+    </div>
+</main>
+<script>
+    const btnSettings = document.getElementsByTagName('input');
+    const setting  = document.getElementById('setting');
+    const msk = document.getElementById('msk');
+    const bgSetting = document.getElementById('bg').getElementsByTagName('span');
+    const weSetting = document.getElementById('wi').getElementsByTagName('span');
+    const heSetting = document.getElementById('he').getElementsByTagName('span');
+    const main = document.getElementById('main1');
+    btnSettings[0].onclick = function(){
+        setting.style.display = 'block';
+    };
+    let arr = ['red','yellow','blue'];
+    let arr2 = [200,300,400];
+    for(let i=0;i<bgSetting.length;i++){
+        bgSetting[i].onclick = function(){
+            if(i === 0){}else{
+                main.style.backgroundColor = arr[i-1];
+            }
+        };
+        weSetting[i].onclick = function(){
+            if(i === 0){}else{
+                main.style.width = arr2[i-1] + 'px';
+            }
+        };
+        heSetting[i].onclick = function(){
+            if(i===0){}else{
+                main.style.height = arr2[i-1] + 'px';
+            }
+        };
+    }
+    btnSettings[1].onclick = function(){
+        main.style.cssText = '';
+    };
+    btnSettings[2].onclick = function(){
+        setting.style.display = 'none';
+    }
+</script>
+</body>
+</html>
